@@ -27,7 +27,7 @@ public class MainActivityCreateAccount extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main_create_account);
         f_name = findViewById(R.id.first_name);
         l_name = findViewById(R.id.last_name);
         weight = findViewById(R.id.weight);
