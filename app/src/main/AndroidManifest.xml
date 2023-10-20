@@ -13,21 +13,24 @@
         android:theme="@style/Theme.FitGuide"
         tools:targetApi="31">
         <activity
+            android:name=".MainActivity2"
+            android:exported="false" />
+        <activity
             android:name=".MainActivityCreateAccount"
             android:exported="false" />
         <activity
             android:name=".MainActivityLogin"
-            android:exported="false" />
+            android:exported="true" android:label="@string/app_name"
+            android:theme="@style/Theme.FitGuide"> <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
         <activity
             android:name=".MainActivity"
-            android:exported="true"
-            android:label="@string/app_name"
-            android:theme="@style/Theme.FitGuide">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+            android:exported="false"
+            >
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
     </application>
 

@@ -55,7 +55,7 @@ public class MainActivityLogin extends AppCompatActivity {
                                     @Override
                                     public void onSuccess(AuthResult authResult) {
                                         Toast.makeText(MainActivityLogin.this,"Successfully Login",Toast.LENGTH_LONG).show();
-                                        startActivity(new Intent(MainActivityLogin.this,MainActivity3.class));
+                                        startActivity(new Intent(MainActivityLogin.this,MainActivity2.class));
                                     }
                                 });
                     }
@@ -68,7 +68,7 @@ public class MainActivityLogin extends AppCompatActivity {
         create_act.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivityLogin.this,MainActivity2.class));
+                startActivity(new Intent(MainActivityLogin.this, MainActivityCreateAccount.class));
             }
         });
 
