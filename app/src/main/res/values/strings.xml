@@ -13,6 +13,8 @@
     <!-- Strings used for buttons -->
     <string name="new_workout">Create New Workout Routine</string>
     <string name="load_workout">Load Saved Workout Routine</string>
+    <string name="new_diet">Create New Diet</string>
+    <string name="load_diet">Load Saved Diet</string>
 
     <!-- Strings for workout routine styles -->
     <string name="routine_style_1">Use Specific Muscle Parts</string>

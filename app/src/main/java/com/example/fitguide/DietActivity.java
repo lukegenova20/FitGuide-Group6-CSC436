@@ -17,6 +17,10 @@ import androidx.navigation.ui.NavigationUI;
 
 
 public class DietActivity extends AppCompatActivity {
-
-    private AppBarConfiguration appBarConfiguration;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_meals);
+    }
+        private AppBarConfiguration appBarConfiguration;
 }
