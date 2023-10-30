@@ -68,8 +68,8 @@ public class Workout_Selection extends AppCompatActivity implements PopupMenu.On
             @Override
             public void onClick(View v) {
                 // TODO: Load to the Workout Routine Calender Page
-                Intent switchIntent = new Intent(v.getContext(), DummyPage.class);
-                startActivity(switchIntent);
+                Intent intent = new Intent(Workout_Selection.this, WorkoutRoutineActivity.class);
+                startActivity(intent);
 
             }
         });
