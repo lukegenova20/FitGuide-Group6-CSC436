@@ -57,4 +57,7 @@
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
     <string name="title_activity_dummy_page">DummyPage</string>
+    <string name="title_activity_diet">DietActivity</string>
+    <string name="title_activity_workout_routine">WorkoutRoutineActivity</string>
+    <string name="title_activity_workout_list">WorkoutListActivity</string>
 </resources>
