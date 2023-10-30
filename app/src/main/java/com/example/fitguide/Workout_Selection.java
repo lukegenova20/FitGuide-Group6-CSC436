@@ -67,7 +67,7 @@ public class Workout_Selection extends AppCompatActivity implements PopupMenu.On
         load_workout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load to the Workout Routine Calender Page
+                // Load to the List of saved workout routine and allow the user to customize each.
                 Intent intent = new Intent(Workout_Selection.this, WorkoutRoutineActivity.class);
                 startActivity(intent);
 
@@ -92,21 +92,26 @@ public class Workout_Selection extends AppCompatActivity implements PopupMenu.On
      */
     @Override
     public boolean onMenuItemClick(MenuItem item) {
-        // TODO: Pass Data to Workout Routine Creation Page
+
+        // Let workout creator know what kind of workout style the user wants for their routine.
         if (item.getItemId() == R.id.routine_style_1){
-            Intent switchIntent = new Intent(Workout_Selection.this, DummyPage.class);
+            Intent switchIntent = new Intent(Workout_Selection.this, Workout_Creation.class);
+            switchIntent.putExtra("workout_style", item.getTitle());
             startActivity(switchIntent);
             return true;
         } else if (item.getItemId() == R.id.routine_style_2){
-            Intent switchIntent = new Intent(Workout_Selection.this, DummyPage.class);
+            Intent switchIntent = new Intent(Workout_Selection.this, Workout_Creation.class);
+            switchIntent.putExtra("workout_style", item.getTitle());
             startActivity(switchIntent);
             return true;
         } else if (item.getItemId() == R.id.routine_style_3){
-            Intent switchIntent = new Intent(Workout_Selection.this, DummyPage.class);
+            Intent switchIntent = new Intent(Workout_Selection.this, Workout_Creation.class);
+            switchIntent.putExtra("workout_style", item.getTitle());
             startActivity(switchIntent);
             return true;
         } else if (item.getItemId() == R.id.routine_style_4){
-            Intent switchIntent = new Intent(Workout_Selection.this, DummyPage.class);
+            Intent switchIntent = new Intent(Workout_Selection.this, Workout_Creation.class);
+            switchIntent.putExtra("workout_style", item.getTitle());
             startActivity(switchIntent);
             return true;
         } else {
