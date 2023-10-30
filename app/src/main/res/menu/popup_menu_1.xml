@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/routine_style_1"
+        android:title="@string/routine_style_1"
+        ></item>
+    <item android:id="@+id/routine_style_2"
+        android:title="@string/routine_style_2"
+        ></item>
+    <item android:id="@+id/routine_style_3"
+        android:title="@string/routine_style_3"
+        ></item>
+    <item android:id="@+id/routine_style_4"
+        android:title="@string/routine_style_4"
+        ></item>
+
+</menu>

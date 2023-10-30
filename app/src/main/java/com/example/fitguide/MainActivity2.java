@@ -55,7 +55,7 @@ public class MainActivity2 extends AppCompatActivity {
         selectWorkout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(MainActivity2.this, WorkoutRoutineActivity.class);
+                Intent intent = new Intent(MainActivity2.this, Workout_Selection.class);
                 startActivity(intent);
             }
         });
