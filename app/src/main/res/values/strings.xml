@@ -1,11 +1,24 @@
 <resources>
     <string name="app_name">FitGuide</string>
     <string name="action_settings">Settings</string>
-    <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
+    <string name="second_fragment_label">First Fragment</string>
+    <string name="next">next</string>
+    <string name="previous">previous</string>
+
+    <!-- Strings for header -->
+    <string name="DropDown">Dropdown</string>
+    <string name="Settings">Settings</string>
+
+    <!-- Strings used for buttons -->
+    <string name="new_workout">Create New Workout Routine</string>
+    <string name="load_workout">Load Saved Workout Routine</string>
+
+    <!-- Strings for workout routine styles -->
+    <string name="routine_style_1">Use Specific Muscle Parts</string>
+    <string name="routine_style_2">Push, Pull, Legs</string>
+    <string name="routine_style_3">Cardio</string>
+    <string name="routine_style_4">Freestyle</string>
 
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
@@ -43,4 +56,5 @@
         libero vel nunc consequat, quis tincidunt nisl eleifend. Cras bibendum enim a justo luctus
         vestibulum. Fusce dictum libero quis erat maximus, vitae volutpat diam dignissim.
     </string>
+    <string name="title_activity_dummy_page">DummyPage</string>
 </resources>
