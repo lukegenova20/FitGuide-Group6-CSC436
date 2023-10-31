@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 public class Workout_Selection extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
 
@@ -37,6 +38,8 @@ public class Workout_Selection extends AppCompatActivity implements PopupMenu.On
             @Override
             public void onClick(View v) {
                 // TODO: Load pop-up menu
+                // Disable menu selection for workout routine creation.
+                Toast.makeText(getApplicationContext(), "NEED TO WORK ON THIS", Toast.LENGTH_SHORT).show();
             }
         });
 

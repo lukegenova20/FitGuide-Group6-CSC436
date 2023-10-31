@@ -6,11 +6,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -27,12 +29,41 @@ public class Workout_Creation extends AppCompatActivity implements PopupMenu.OnM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_creation);
 
-        loadMuscleGroups();
+        if (muscleGroups.isEmpty()){
+            loadMuscleGroups();
+        }
 
         loadData();
-
         saveRoutine();
         addHeaderListeners();
+    }
+
+    /*
+     * Adds specific muscle groups to list of muscle groups
+     */
+    private void addSpecificMuscleGroup(){
+        muscleGroups.add("Arms");
+        muscleGroups.add("Biceps");
+        muscleGroups.add("Triceps");
+        muscleGroups.add("Forearms");
+        muscleGroups.add("Chest");
+        muscleGroups.add("Shoulders");
+        muscleGroups.add("Abs");
+        muscleGroups.add("Legs");
+        muscleGroups.add("Hamstrings");
+        muscleGroups.add("Glutes");
+        muscleGroups.add("Calves");
+        muscleGroups.add("Quads");
+        muscleGroups.add("Hips");
+    }
+
+    /*
+     * Adds specific muscle groups to list of muscle groups
+     */
+    private void addPushPullLegsGroup(){
+        muscleGroups.add("Push");
+        muscleGroups.add("Pull");
+        muscleGroups.add("Legs");
     }
 
     /*
@@ -44,13 +75,15 @@ public class Workout_Creation extends AppCompatActivity implements PopupMenu.OnM
 
       if (style != null){
           if (style.equals(getString(R.string.routine_style_1))){
-              // TODO: add muscle groups
+              addSpecificMuscleGroup();
           } else if (style.equals(getString(R.string.routine_style_2))){
-              // TODO: add muscle groups
+              addPushPullLegsGroup();
           } else if (style.equals(getString(R.string.routine_style_3))){
-              // TODO: add muscle groups
+              muscleGroups.add("Cardio");
           } else {
-              // TODO: add muscle groups
+              addSpecificMuscleGroup();
+              addPushPullLegsGroup();
+              muscleGroups.add("Cardio");
           }
           muscleGroups.add("Break");
       }
@@ -95,7 +128,16 @@ public class Workout_Creation extends AppCompatActivity implements PopupMenu.OnM
 
         String muscleGroup = (String) item.getTitle();
 
+        // TODO: Not Sure if this would work NEED TO TEST THIS
+        FrameLayout layout = (FrameLayout) dateSelected.getParent();
+
+        // TODO: Not Sure if this would work NEED TO TEST THIS
+        TextView result = (TextView) layout.getChildAt(3);
+        result.setText(muscleGroup);
+
         if (!muscleGroup.equals("Break")){
+
+            // TODO: Create workout list page
             Intent intent = new Intent(Workout_Creation.this, DummyPage.class);
             startActivity(intent);
         }
@@ -113,9 +155,10 @@ public class Workout_Creation extends AppCompatActivity implements PopupMenu.OnM
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Save the routine.
+                // TODO: Save the routine through the database.
                 Intent intent = new Intent(Workout_Creation.this, Workout_Selection.class);
                 startActivity(intent);
+                muscleGroups.clear();
             }
         });
     }
