@@ -1,6 +1,9 @@
 package com.example.fitguide;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -28,5 +31,15 @@ public class WorkoutListActivity extends AppCompatActivity {
 
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, workouts);
         workoutListView.setAdapter(adapter);
+
+        workoutListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                if (position == 0) { // Assuming "Workout 1" is at position 0
+                    Intent intent = new Intent(WorkoutListActivity.this, WorkoutDetailActivity.class);
+                    startActivity(intent);
+                }
+            }
+        });
     }
 }
