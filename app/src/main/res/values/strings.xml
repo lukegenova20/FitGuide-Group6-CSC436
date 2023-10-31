@@ -22,6 +22,19 @@
     <string name="routine_style_3">Cardio</string>
     <string name="routine_style_4">Freestyle</string>
 
+
+    <!-- Strings for the workout routine creation page -->
+    <string name="routine_calender">Workout Routine Calender</string>
+    <string name="save">Save Routine</string>
+    <string name="sunday">Sunday</string>
+    <string name="monday">Monday</string>
+    <string name="tuesday">Tuesday</string>
+    <string name="wednesday">Wednesday</string>
+    <string name="thursday">Thursday</string>
+    <string name="friday">Friday</string>
+    <string name="saturday">Saturday</string>
+
+
     <string name="lorem_ipsum">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris
         volutpat, dolor id interdum ullamcorper, risus dolor egestas lectus, sit amet mattis purus
