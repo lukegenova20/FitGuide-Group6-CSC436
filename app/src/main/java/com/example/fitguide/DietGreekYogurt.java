@@ -14,16 +14,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class DietActivity extends AppCompatActivity {
+public class DietGreekYogurt extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meals);
+        setContentView(R.layout.activity_greek_yogurt);
 
-        Button designDiet = findViewById(R.id.new_diet);
+        Button backButton = findViewById(R.id.back_button);
 
-        designDiet.setOnClickListener(new View.OnClickListener() {
+        backButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), NewDietActivity.class);
