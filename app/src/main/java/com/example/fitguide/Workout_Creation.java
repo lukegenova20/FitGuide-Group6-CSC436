@@ -19,8 +19,11 @@ import java.util.ArrayList;
 
 public class Workout_Creation extends AppCompatActivity {
 
+    
+    // Keeps a list of muscle groups that the user considers on focusing.
     ArrayList<String> muscleGroups;
 
+    // Used to determine which button was selected.
     Button dateSelected;
 
     static final int DAYS_IN_WEEK = 7;
@@ -58,6 +61,7 @@ public class Workout_Creation extends AppCompatActivity {
         muscleGroups.add("Hamstrings");
         muscleGroups.add("Quadriceps");
         muscleGroups.add("Calves");
+        muscleGroups.add("Glutes")
         muscleGroups.add("Hips");
     }
 
