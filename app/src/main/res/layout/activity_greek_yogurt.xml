@@ -79,10 +79,12 @@
             android:layout_width="364dp"
             android:layout_height="wrap_content"
             android:text="First measure 6 ounces of Greek yogurt and place in bowl. Next wash and prepare 1/2 cup of mixed berries. Then sprinkle the berries on top of the yogurt. To add a touch of healthy fats, sprinkle 1 tablespoon of sliced almonds on top."
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textview_sixth"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            app:layout_constraintVertical_bias="0.0" />
 
         <Button
             android:id="@+id/back_button"
