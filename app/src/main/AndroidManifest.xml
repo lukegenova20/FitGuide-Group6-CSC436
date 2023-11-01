@@ -45,8 +45,8 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- <activity android:name=".DietActivity" /> -->
-        <!-- <activity android:name=".WorkoutRoutineActivity" /> -->
+        </activity>
+        <activity android:name=".WorkoutRoutineActivity" />
         <!-- <activity android:name=".WorkoutEncyclopediaActivity" /> -->
         <activity android:name=".WorkoutDetailActivity"></activity>
         <activity android:name=".DietActivity"></activity>

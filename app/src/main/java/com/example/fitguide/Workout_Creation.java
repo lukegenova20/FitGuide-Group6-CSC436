@@ -17,11 +17,13 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class Workout_Creation extends AppCompatActivity implements PopupMenu.OnMenuItemClickListener{
+public class Workout_Creation extends AppCompatActivity {
 
     ArrayList<String> muscleGroups;
 
     Button dateSelected;
+
+    static final int DAYS_IN_WEEK = 7;
 
 
     @Override
@@ -29,9 +31,12 @@ public class Workout_Creation extends AppCompatActivity implements PopupMenu.OnM
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_creation);
 
+        muscleGroups = new ArrayList<String>();
+
         if (muscleGroups.isEmpty()){
             loadMuscleGroups();
         }
+        addButtonListeners();
 
         loadData();
         saveRoutine();
@@ -51,9 +56,8 @@ public class Workout_Creation extends AppCompatActivity implements PopupMenu.OnM
         muscleGroups.add("Abs");
         muscleGroups.add("Legs");
         muscleGroups.add("Hamstrings");
-        muscleGroups.add("Glutes");
+        muscleGroups.add("Quadriceps");
         muscleGroups.add("Calves");
-        muscleGroups.add("Quads");
         muscleGroups.add("Hips");
     }
 
@@ -103,47 +107,55 @@ public class Workout_Creation extends AppCompatActivity implements PopupMenu.OnM
     }
 
     /*
-     * Event handler for when a button has been pressed for one of the
-     * days of the week.
+     * Adds Event handlers for each button that represents the days in the week.
      */
-    private void OnDateClickListener(View v) {
+    private void addButtonListeners(){
+        Button dateButtons[] = new Button[DAYS_IN_WEEK];
+        dateButtons[0] = findViewById(R.id.sunday_button);
+        dateButtons[1] = findViewById(R.id.monday_button);
+        dateButtons[2] = findViewById(R.id.tuesday_button);
+        dateButtons[3] = findViewById(R.id.wednesday_button);
+        dateButtons[4] = findViewById(R.id.thursday_button);
+        dateButtons[5] = findViewById(R.id.friday_button);
+        dateButtons[6] = findViewById(R.id.saturday_button);
 
-        dateSelected = findViewById(v.getId());
+        for (int i = 0; i < DAYS_IN_WEEK; i++){
+            dateButtons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dateSelected = findViewById(v.getId());
 
-        // Show popup menu that displays options.
-        PopupMenu menu = new PopupMenu(this, v);
-        for (int i = 0; i < muscleGroups.size(); i++){
-            menu.getMenu().add(muscleGroups.get(i));
+                    // Show popup menu that displays options.
+                    PopupMenu menu = new PopupMenu(getApplicationContext(), v);
+                    for (int i = 0; i < muscleGroups.size(); i++){
+                        menu.getMenu().add(muscleGroups.get(i));
+                    }
+                    menu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                        @Override
+                        public boolean onMenuItemClick(MenuItem item) {
+                            String muscleGroup = (String) item.getTitle();
+
+                            FrameLayout layout = (FrameLayout) dateSelected.getParent();
+
+                            TextView result = (TextView) layout.getChildAt(3);
+                            result.setText(muscleGroup);
+
+                            if (!muscleGroup.equals("Break")){
+
+                                // TODO: Create workout list page
+                                Intent intent = new Intent(Workout_Creation.this, DummyPage.class);
+                                startActivity(intent);
+                            }
+
+                            return true;
+                        }
+                    });
+                    menu.show();
+                }
+            });
         }
-        menu.setOnMenuItemClickListener(this);
-        menu.show();
-
     }
 
-    /*
-     * Event Handler for when menu item has been clicked.
-     */
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-
-        String muscleGroup = (String) item.getTitle();
-
-        // TODO: Not Sure if this would work NEED TO TEST THIS
-        FrameLayout layout = (FrameLayout) dateSelected.getParent();
-
-        // TODO: Not Sure if this would work NEED TO TEST THIS
-        TextView result = (TextView) layout.getChildAt(3);
-        result.setText(muscleGroup);
-
-        if (!muscleGroup.equals("Break")){
-
-            // TODO: Create workout list page
-            Intent intent = new Intent(Workout_Creation.this, DummyPage.class);
-            startActivity(intent);
-        }
-
-        return false;
-    }
 
     /*
      * This function sets up the event handler for when the
