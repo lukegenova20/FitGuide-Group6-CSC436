@@ -49,6 +49,7 @@
         <!-- <activity android:name=".WorkoutRoutineActivity" /> -->
         <!-- <activity android:name=".WorkoutEncyclopediaActivity" /> -->
         <activity android:name=".WorkoutDetailActivity"></activity>
+        <activity android:name=".DietActivity"></activity>
 
         <activity
             android:name=".MainActivity"
