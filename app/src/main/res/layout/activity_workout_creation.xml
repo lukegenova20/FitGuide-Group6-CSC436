@@ -55,8 +55,8 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <ScrollView
-        android:layout_width="409dp"
-        android:layout_height="646dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:fillViewport="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -86,7 +86,6 @@
                     android:text="No_Text"
                     android:textColor="@color/black"
                     android:textSize="0sp"
-                    android:onClick="OnDateClickListener"
                     app:backgroundTint="@null"/>
 
                 <TextView
@@ -151,7 +150,6 @@
                     android:text="No_Text"
                     android:textColor="@color/black"
                     android:textSize="0sp"
-                    android:onClick="OnDateClickListener"
                     app:backgroundTint="@null"/>
 
                 <TextView
@@ -202,7 +200,6 @@
                     android:text="No_Text"
                     android:textColor="@color/black"
                     android:textSize="0sp"
-                    android:onClick="OnDateClickListener"
                     app:backgroundTint="@null"/>
 
                 <TextView
@@ -253,7 +250,6 @@
                     android:text="No_Text"
                     android:textColor="@color/black"
                     android:textSize="0sp"
-                    android:onClick="OnDateClickListener"
                     app:backgroundTint="@null"/>
 
                 <TextView
@@ -304,7 +300,6 @@
                     android:text="No_Text"
                     android:textColor="@color/black"
                     android:textSize="0sp"
-                    android:onClick="OnDateClickListener"
                     app:backgroundTint="@null"/>
 
                 <TextView
@@ -355,7 +350,6 @@
                     android:text="No_Text"
                     android:textColor="@color/black"
                     android:textSize="0sp"
-                    android:onClick="OnDateClickListener"
                     app:backgroundTint="@null"/>
 
                 <TextView
@@ -406,7 +400,6 @@
                     android:text="No_Text"
                     android:textColor="@color/black"
                     android:textSize="0sp"
-                    android:onClick="OnDateClickListener"
                     app:backgroundTint="@null"/>
 
                 <TextView
