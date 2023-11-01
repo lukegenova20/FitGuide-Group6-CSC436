@@ -61,7 +61,7 @@ public class Workout_Creation extends AppCompatActivity {
         muscleGroups.add("Hamstrings");
         muscleGroups.add("Quadriceps");
         muscleGroups.add("Calves");
-        muscleGroups.add("Glutes")
+        muscleGroups.add("Glutes");
         muscleGroups.add("Hips");
     }
 
