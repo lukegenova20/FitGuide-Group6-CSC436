@@ -50,7 +50,8 @@
         <!-- <activity android:name=".WorkoutEncyclopediaActivity" /> -->
         <activity android:name=".WorkoutDetailActivity"></activity>
         <activity android:name=".DietActivity"></activity>
-
+        <activity android:name=".DietGreekYogurt"></activity>
+        <activity android:name=".NewDietActivity"></activity>
         <activity
             android:name=".MainActivity"
             android:exported="false" />
