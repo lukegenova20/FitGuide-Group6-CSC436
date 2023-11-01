@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+
+        <TextView
+            android:id="@+id/textview_second"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ingredients"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+
+        <TextView
+            android:id="@+id/textview_third"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="\n- 6 ounces (170g) of non-fat or low-fat Greek yogurt\n- 1/2 cup of mixed berries (such as strawberries, blueberries, and raspberries)\n- A small handful (about 1 tablespoon) of sliced almonds\n"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fifth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="1.0" />
+
+        <TextView
+            android:id="@+id/textview_fourth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Nutrition Facts:"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fifth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textview_fifth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Calories: Approximately 200-220 calories\nProtein: About 15-20 grams\nCarbohydrates: Around 20-25 grams\nDietary Fiber: Approximately 3-4 grams\nSugars: About 10-15 grams\nFat: Around 5-7 grams\nSaturated Fat: Approximately 1-2 grams\nCholesterol: Depends on the yogurt, but generally low\nSodium: Approximately 40-60 milligrams\nCalcium: Approximately 200-250 milligrams"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fourth" />
+
+        <TextView
+            android:id="@+id/textview_sixth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Instructions:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fifth"
+            android:textStyle="bold"
+            />
+
+        <TextView
+            android:id="@+id/textview_seventh"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="First measure 6 ounces of Greek yogurt and place in bowl. Next wash and prepare 1/2 cup of mixed berries. Then sprinkle the berries on top of the yogurt. To add a touch of healthy fats, sprinkle 1 tablespoon of sliced almonds on top."
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_sixth"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            app:layout_constraintTop_toBottomOf="@+id/textview_seventh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="365dp"
+            android:layout_height="279dp"
+            android:src="@drawable/greek_yogurt"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+        <!-- Adjust the constraint here -->
+        app:srcCompat="@drawable/greek_yogurt"
+        android:contentDescription="Image" />
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>

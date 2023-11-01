@@ -14,19 +14,31 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-public class DietActivity extends AppCompatActivity {
+public class NewDietActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meals);
+        setContentView(R.layout.activity_new_diet);
 
-        Button designDiet = findViewById(R.id.new_diet);
+        TextView designDiet = findViewById(R.id.textview_greekyogurt);
+        Button backButton = findViewById(R.id.back_button);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietActivity.class);
+                startActivity(intent);
+            }
+        });
+
+
 
         designDiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), NewDietActivity.class);
+                Intent intent = new Intent(getApplicationContext(), DietGreekYogurt.class);
                 startActivity(intent);
             }
         });
