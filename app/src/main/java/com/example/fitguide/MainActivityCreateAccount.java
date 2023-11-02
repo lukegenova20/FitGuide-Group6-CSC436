@@ -1,4 +1,6 @@
 package com.example.fitguide;
+import static android.content.ContentValues.TAG;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,6 +15,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.fitguide.Workout_Classes.WorkoutRoutine;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -22,7 +25,9 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 //test change for github version control guide
@@ -91,6 +96,8 @@ public class MainActivityCreateAccount extends AppCompatActivity {
                                         ).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                                             @Override
                                             public void onSuccess(AuthResult authResult) {
+
+                                                // Create document for personal info.
                                                 Map<String, Object> datas = new HashMap<>();
                                                 datas.put("First Name",f_name.getText().toString());
                                                 datas.put("Last Name",l_name.getText().toString());
@@ -100,6 +107,21 @@ public class MainActivityCreateAccount extends AppCompatActivity {
                                                             @Override
                                                             public void onSuccess(Void unused) {
                                                                 startActivity(new Intent(MainActivityCreateAccount.this,MainActivity2.class));
+                                                            }
+                                                        });
+
+                                                // Create document for workout info.
+                                                Map<String, Object> workoutData = new HashMap<>();
+                                                workoutData.put("Number of Workouts", 0);
+                                                List<WorkoutRoutine> workoutRoutines = new ArrayList<WorkoutRoutine>();
+                                                workoutData.put("Workout Routines", workoutRoutines);
+                                                workoutData.put("Selected Workout", null);
+                                                firebaseFirestore.collection(authResult.getUser().getUid()).
+                                                        document("Workout_Routines").set(workoutData).
+                                                        addOnFailureListener(new OnFailureListener() {
+                                                            @Override
+                                                            public void onFailure(@NonNull Exception e) {
+                                                                Log.w(TAG, "Error writing document", e);
                                                             }
                                                         });
 

@@ -1,5 +1,6 @@
 package com.example.fitguide;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -15,18 +16,34 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
+import com.google.firebase.firestore.FirebaseFirestore;
+
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Workout_Creation extends AppCompatActivity {
 
     
     // Keeps a list of muscle groups that the user considers on focusing.
-    ArrayList<String> muscleGroups;
+    List<String> muscleGroups;
 
     // Used to determine which button was selected.
     Button dateSelected;
 
     static final int DAYS_IN_WEEK = 7;
+
+    FirebaseAuth firebaseAuth;
+    FirebaseFirestore firebaseFirestore;
+
+    WorkoutRoutine currentRoutine;
 
 
     @Override
@@ -34,14 +51,14 @@ public class Workout_Creation extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_creation);
 
+        firebaseAuth  =FirebaseAuth.getInstance();
+        firebaseFirestore  = FirebaseFirestore.getInstance();
+
         muscleGroups = new ArrayList<String>();
 
-        if (muscleGroups.isEmpty()){
-            loadMuscleGroups();
-        }
         addButtonListeners();
-
         loadData();
+
         saveRoutine();
         addHeaderListeners();
     }
@@ -78,8 +95,7 @@ public class Workout_Creation extends AppCompatActivity {
      * This function stores muscles groups into the array of muscle groups based on
      * what the user selected in the workout_selection page.
      */
-    private void loadMuscleGroups(){
-      String style = getIntent().getStringExtra("workout_style");
+    private void loadMuscleGroups(String style){
 
       if (style != null){
           if (style.equals(getString(R.string.routine_style_1))){
@@ -103,10 +119,53 @@ public class Workout_Creation extends AppCompatActivity {
      * function would load up all of that data and display it.
      */
     private void loadData(){
-        String loadData = getIntent().getStringExtra("load");
+        WorkoutRoutine loadRoutine = (WorkoutRoutine) getIntent().getSerializableExtra("Editing");
 
-        if (loadData != null){
-            // TODO: Query into User database and fill in data.
+        if (loadRoutine != null){
+            currentRoutine = loadRoutine;
+
+            // Change the body coverage text for each day in the UI based on the current routine.
+            Button dateButtons[] = new Button[DAYS_IN_WEEK];
+            dateButtons[0] = findViewById(R.id.sunday_button);
+            dateButtons[1] = findViewById(R.id.monday_button);
+            dateButtons[2] = findViewById(R.id.tuesday_button);
+            dateButtons[3] = findViewById(R.id.wednesday_button);
+            dateButtons[4] = findViewById(R.id.thursday_button);
+            dateButtons[5] = findViewById(R.id.friday_button);
+            dateButtons[6] = findViewById(R.id.saturday_button);
+
+            for (int i = 0; i < DAYS_IN_WEEK; i++){
+                FrameLayout layout = (FrameLayout) dateButtons[i].getParent();
+                TextView result = (TextView) layout.getChildAt(3);
+                result.setText(currentRoutine.getMuscleGroup(i));
+            }
+
+            loadMuscleGroups(currentRoutine.getStyle());
+
+        } else {
+            String style = getIntent().getStringExtra("workout_style");
+            loadMuscleGroups(style);
+
+            // Create a new Workout Routine
+            Map<String, Integer> counter = new HashMap<String, Integer>();
+            firebaseFirestore.collection(firebaseAuth.getUid()).
+                    document("Workout_Routines").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            int result = (int) documentSnapshot.get("Number of Workouts");
+                            counter.put("Counter", result);
+                        }
+                    });
+            String name = "Workout" + counter.get("Counter").toString();
+            currentRoutine = new WorkoutRoutine(name, getIntent().getStringExtra("workout_style"));
+            counter.put("counter", counter.get("Counter") + 1);
+
+            // Update workout routine counter.
+            firebaseFirestore.collection(firebaseAuth.getUid()).
+                    document("Workout_Routines").update(
+                            "Number of Workouts", counter.get("Counter")
+                    );
+
         }
     }
 
@@ -168,13 +227,35 @@ public class Workout_Creation extends AppCompatActivity {
     private void saveRoutine(){
         Button saveButton = findViewById(R.id.save_workout);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(Workout_Creation.this);
+        builder.setIcon(R.drawable.baseline_error_24);
+        builder.setTitle(" ");
+        builder.setCancelable(true);
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Save the routine through the database.
-                Intent intent = new Intent(Workout_Creation.this, Workout_Selection.class);
-                startActivity(intent);
-                muscleGroups.clear();
+                // Save the routine to the user database.
+
+                // Checks if the routine has been completed.
+                if (currentRoutine.workoutRoutineCompleted()) {
+
+                    // Add it to the database.
+                    DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getUid()).document("Workout_Routines");
+                    doc.update("Workout Routine", FieldValue.arrayUnion(currentRoutine));
+
+                    // Go back to Workout Selection.
+                    Intent intent = new Intent(Workout_Creation.this, Workout_Selection.class);
+                    startActivity(intent);
+                    muscleGroups.clear();
+                } else {
+
+                    // If the routine hasn't been completed, notify the user.
+
+                    builder.setMessage("Workout Routine hasn't been completed yet.");
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
+                }
             }
         });
     }
