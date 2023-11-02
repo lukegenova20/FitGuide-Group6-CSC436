@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewParent;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
@@ -61,6 +63,15 @@ public class Workout_Creation extends AppCompatActivity {
 
         saveRoutine();
         addHeaderListeners();
+
+        // TODO: Might add this to a new page called current progress or delete it if there is no time.
+        CheckBox check = findViewById(R.id.checkBox);
+        check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                currentRoutine.setSelected(isChecked);
+            }
+        });
     }
 
     /*
@@ -119,7 +130,7 @@ public class Workout_Creation extends AppCompatActivity {
      * function would load up all of that data and display it.
      */
     private void loadData(){
-        WorkoutRoutine loadRoutine = (WorkoutRoutine) getIntent().getSerializableExtra("Editing");
+        WorkoutRoutine loadRoutine = (WorkoutRoutine) getIntent().getSerializableExtra("loading");
 
         if (loadRoutine != null){
             currentRoutine = loadRoutine;
@@ -251,7 +262,6 @@ public class Workout_Creation extends AppCompatActivity {
                 } else {
 
                     // If the routine hasn't been completed, notify the user.
-
                     builder.setMessage("Workout Routine hasn't been completed yet.");
                     AlertDialog alertDialog = builder.create();
                     alertDialog.show();

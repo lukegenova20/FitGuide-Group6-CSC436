@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FitGuide"
         tools:targetApi="31">
         <activity
+            android:name=".Saved_Workout_Selection"
+            android:exported="false" />
+        <activity
             android:name=".Workout_Creation"
             android:exported="false" />
         <activity
@@ -46,12 +49,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".WorkoutRoutineActivity" />
-        <!-- <activity android:name=".WorkoutEncyclopediaActivity" /> -->
-        <activity android:name=".WorkoutDetailActivity"></activity>
-        <activity android:name=".DietActivity"></activity>
-        <activity android:name=".DietGreekYogurt"></activity>
-        <activity android:name=".NewDietActivity"></activity>
+        <activity android:name=".WorkoutRoutineActivity" /> <!-- <activity android:name=".WorkoutEncyclopediaActivity" /> -->
+        <activity android:name=".WorkoutDetailActivity" />
+        <activity android:name=".DietActivity" />
+        <activity android:name=".DietGreekYogurt" />
+        <activity android:name=".NewDietActivity" />
         <activity
             android:name=".MainActivity"
             android:exported="false" />

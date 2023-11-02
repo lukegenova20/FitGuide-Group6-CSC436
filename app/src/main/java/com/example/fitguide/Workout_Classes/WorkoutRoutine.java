@@ -105,8 +105,7 @@ public class WorkoutRoutine implements Serializable {
     /*
      * Selects or unselects the current routine.
      */
-    public void setSelected(){
-        boolean newBool = !selected;
+    public void setSelected(boolean newBool){
         selected = newBool;
     }
 

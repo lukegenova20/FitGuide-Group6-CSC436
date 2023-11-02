@@ -1,5 +1,6 @@
 package com.example.fitguide;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -12,12 +13,27 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.List;
+
 public class Workout_Selection extends AppCompatActivity {
+
+    FirebaseAuth firebaseAuth;
+    FirebaseFirestore firebaseFirestore;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_workout_selection);
+
+        firebaseAuth  =FirebaseAuth.getInstance();
+        firebaseFirestore  = FirebaseFirestore.getInstance();
 
         addMainButtonListeners();
 
@@ -60,6 +76,11 @@ public class Workout_Selection extends AppCompatActivity {
         Button new_workout = findViewById(R.id.new_workout);
         Button load_workout = findViewById(R.id.load_workout);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(Workout_Selection.this);
+        builder.setIcon(R.drawable.baseline_error_24);
+        builder.setTitle(" ");
+        builder.setCancelable(true);
+
         new_workout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -70,10 +91,23 @@ public class Workout_Selection extends AppCompatActivity {
         load_workout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load to the List of saved workout routine and allow the user to customize each.
-                Intent intent = new Intent(Workout_Selection.this, DummyPage.class);
-                startActivity(intent);
 
+                // If the user didn't create any routines, notify the user.
+                DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getUid()).document("Workout_Routines");
+                doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        List<WorkoutRoutine> routineList = (List<WorkoutRoutine>) documentSnapshot.get("Workout Routines");
+                        if (routineList.size() == 0){
+                            builder.setMessage("You haven't made any workout routines yet!");
+                            AlertDialog alertDialog = builder.create();
+                            alertDialog.show();
+                        } else {
+                            Intent intent = new Intent(Workout_Selection.this, Saved_Workout_Selection.class);
+                            startActivity(intent);
+                        }
+                    }
+                });
             }
         });
 

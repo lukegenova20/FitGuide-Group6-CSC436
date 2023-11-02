@@ -6,6 +6,8 @@
     <string name="next">next</string>
     <string name="previous">previous</string>
 
+    <string name="saved_workout_selection">Saved Workout Routines</string>
+
     <!-- Strings for header -->
     <string name="DropDown">Dropdown</string>
     <string name="Settings">Settings</string>

@@ -1,56 +1,107 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="16dp"
     android:orientation="vertical"
     android:gravity="center">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:background="@color/header_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/Dropdown"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="80dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/button_background"
+            android:contentDescription="@string/DropDown"
+            android:paddingEnd="3dp"
+            android:paddingBottom="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/Settings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/icon_color" />
+
+        <ImageButton
+            android:id="@+id/Settings"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="80dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/button_background"
+            android:contentDescription="@string/Settings"
+            android:paddingTop="2dp"
+            android:paddingEnd="3dp"
+            android:paddingBottom="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings_gear"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Dropdown"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/icon_color" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
     <!-- Welcome Username -->
     <TextView
         android:id="@+id/welcome_text"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="1"
         android:gravity="center"
         android:text="Welcome"
+        android:fontFamily="@font/jockey_one"
+        android:textColor="@color/black"
         android:textSize="24sp" />
 
     <!-- Design a Diet Image/Button -->
     <ImageView
         android:id="@+id/design_diet"
-        android:layout_width="match_parent"
+        android:layout_width="234dp"
         android:layout_height="0dp"
         android:layout_weight="2"
         android:src="@drawable/diet_image"
         android:padding="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:clickable="true"
         android:focusable="true"/>
 
     <!-- Select Workout Routine Image/Button -->
     <ImageView
         android:id="@+id/select_workout"
-        android:layout_width="match_parent"
+        android:layout_width="234dp"
         android:layout_height="0dp"
         android:layout_weight="2"
         android:src="@drawable/workout_image"
         android:padding="10dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:clickable="true"
         android:focusable="true"/>
 
     <!-- Workout Encyclopedia Image/Button -->
     <ImageView
         android:id="@+id/workout_encyclopedia"
-        android:layout_width="match_parent"
+        android:layout_width="234dp"
         android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         android:layout_weight="2"
-        android:src="@drawable/books_image"
-        android:padding="10dp"
-        android:layout_marginTop="20dp"
         android:clickable="true"
-        android:focusable="true"/>
+        android:focusable="true"
+        android:padding="10dp"
+        android:src="@drawable/books_image" />
 
 </LinearLayout>
