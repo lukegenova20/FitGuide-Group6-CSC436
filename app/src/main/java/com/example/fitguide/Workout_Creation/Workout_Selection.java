@@ -1,8 +1,7 @@
-package com.example.fitguide;
+package com.example.fitguide.Workout_Creation;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,6 +12,8 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.fitguide.DummyPage;
+import com.example.fitguide.R;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

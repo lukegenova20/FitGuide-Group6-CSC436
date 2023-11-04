@@ -38,7 +38,7 @@ public class WorkoutRoutine implements Serializable {
         daysToExerciseList.put("Wednesday", null);
         daysToExerciseList.put("Thursday", null);
         daysToExerciseList.put("Friday", null);
-        daysToExerciseList.put("Sunday", null);
+        daysToExerciseList.put("Saturday", null);
 
         muscleGroupToDays = new String[7];
 

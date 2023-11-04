@@ -5,7 +5,7 @@
     android:id="@+id/main_workout_creation_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Workout_Creation">
+    tools:context=".Workout_Creation.Workout_Creation">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"

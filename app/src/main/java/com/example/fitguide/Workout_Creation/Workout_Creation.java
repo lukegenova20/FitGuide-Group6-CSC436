@@ -1,4 +1,4 @@
-package com.example.fitguide;
+package com.example.fitguide.Workout_Creation;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -7,8 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
-import android.view.ViewParent;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -18,6 +16,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fitguide.R;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -216,8 +215,11 @@ public class Workout_Creation extends AppCompatActivity {
 
                             if (!muscleGroup.equals("Break")){
 
-                                // TODO: Create workout list page
-                                Intent intent = new Intent(Workout_Creation.this, DummyPage.class);
+                                Intent intent = new Intent(Workout_Creation.this,ExerciseListCreation.class);
+                                TextView day = (TextView) layout.getChildAt(1);
+                                intent.putExtra("day", day.getText());
+                                intent.putExtra("routine", currentRoutine);
+                                intent.putExtra("group", muscleGroup);
                                 startActivity(intent);
                             }
 

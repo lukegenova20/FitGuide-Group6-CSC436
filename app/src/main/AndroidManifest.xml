@@ -13,10 +13,13 @@
         android:theme="@style/Theme.FitGuide"
         tools:targetApi="31">
         <activity
-            android:name=".Saved_Workout_Selection"
+            android:name=".Workout_Creation.ExerciseListCreation"
             android:exported="false" />
         <activity
-            android:name=".Workout_Creation"
+            android:name=".Workout_Creation.Saved_Workout_Selection"
+            android:exported="false" />
+        <activity
+            android:name=".Workout_Creation.Workout_Creation"
             android:exported="false" />
         <activity
             android:name=".DummyPage"
@@ -24,7 +27,7 @@
             android:label="@string/title_activity_dummy_page"
             android:theme="@style/Theme.FitGuide" />
         <activity
-            android:name=".Workout_Selection"
+            android:name=".Workout_Creation.Workout_Selection"
             android:exported="false"
             android:theme="@style/Theme.FitGuide" />
         <activity
@@ -54,9 +57,6 @@
         <activity android:name=".DietActivity" />
         <activity android:name=".DietGreekYogurt" />
         <activity android:name=".NewDietActivity" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

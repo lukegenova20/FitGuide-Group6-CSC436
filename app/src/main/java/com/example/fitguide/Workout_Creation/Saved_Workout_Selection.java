@@ -1,4 +1,4 @@
-package com.example.fitguide;
+package com.example.fitguide.Workout_Creation;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fitguide.DummyPage;
+import com.example.fitguide.R;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;

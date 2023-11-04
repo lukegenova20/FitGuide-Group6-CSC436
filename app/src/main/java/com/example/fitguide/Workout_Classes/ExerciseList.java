@@ -12,10 +12,14 @@ public class ExerciseList implements Serializable {
 
     private List<Exercise> exerciseList;
 
+    private String muscleGroup;
 
-    public ExerciseList(){
+
+    public ExerciseList(){}
+
+    public ExerciseList(String group){
+        muscleGroup = group;
         exerciseList = new ArrayList<Exercise>();
-
     }
 
     /*
@@ -48,9 +52,27 @@ public class ExerciseList implements Serializable {
     }
 
     /*
+     * Gets the specific exercise from the list.
+     */
+    public Exercise getExercise(int index){
+        if (index >= size()){
+            return null;
+        } else if (index < 0){
+            return null;
+        } else {
+            return exerciseList.get(index);
+        }
+    }
+
+    /*
      * Getter for the list of exercises.
      */
     public List<Exercise> getExerciseList(){
         return exerciseList;
     }
+
+    /*
+     * Getter for the muscle group the list covers.
+     */
+    public String getMuscleGroup(){ return muscleGroup;}
 }

@@ -2,10 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/saved_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Workout_Creation.Saved_Workout_Selection">
+    tools:context=".Workout_Creation.ExerciseListCreation">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
@@ -54,10 +53,12 @@
             app:tint="@color/icon_color" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+
     <ScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:fillViewport="true"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -65,69 +66,88 @@
         app:layout_constraintTop_toBottomOf="@+id/header">
 
         <LinearLayout
-            android:id="@+id/loaded_workout_linear_layout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical">
 
+            <Button
+                android:id="@+id/back_button"
+                android:layout_width="129dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="left"
+                android:background="@drawable/button_background"
+                android:drawableLeft="@drawable/arrow_back"
+                android:fontFamily="@font/jockey_one"
+                android:text="Back"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                app:backgroundTint="@null"/>
+
             <TextView
+                android:id="@+id/exercise_text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="20dp"
+                android:gravity="center"
+                android:text="@string/Exercise_List"
                 android:fontFamily="@font/jockey_one"
-                android:text="@string/saved_workout_selection"
                 android:textColor="@color/black"
-                android:textSize="30sp" />
+                android:textSize="30sp"/>
 
-            <FrameLayout
-                android:id="@+id/example_layout"
-                android:layout_width="330dp"
-                android:layout_height="130dp"
-                android:layout_marginTop="40dp">
+            <LinearLayout
+                android:id="@+id/scroll_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
-                <Button
-                    android:id="@+id/example_button"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <FrameLayout
+                    android:id="@+id/exercise_example_layout"
+                    android:layout_width="200dp"
+                    android:layout_height="130dp"
+                    android:layout_marginTop="25dp"
                     android:background="@drawable/button_background"
-                    android:fontFamily="@font/jockey_one"
-                    android:text="No_Text"
-                    android:textColor="@color/black"
-                    android:textSize="0sp"
-                    app:backgroundTint="@null" />
+                    app:backgroundTint="@null" >
 
-                <TextView
-                    android:id="@+id/example_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="@font/jockey_one"
-                    android:gravity="center_horizontal"
-                    android:text="Example"
-                    android:textColor="@color/black"
-                    android:textSize="30sp" />
+                    <TextView
+                        android:id="@+id/exercise_example_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/jockey_one"
+                        android:gravity="center_horizontal"
+                        android:text="Example"
+                        android:textColor="@color/black"
+                        android:textSize="30sp" />
 
-                <View
-                    android:layout_width="325dp"
-                    android:layout_height="4dp"
-                    android:layout_marginTop="40dp"
-                    android:background="@color/border_color" />
+                    <View
+                        android:layout_width="195dp"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@color/border_color" />
 
-                <TextView
-                    android:id="@+id/example_workout"
-                    android:layout_width="match_parent"
-                    android:layout_height="82dp"
-                    android:layout_marginTop="47dp"
-                    android:fontFamily="@font/jockey_one"
-                    android:paddingStart="10dp"
-                    android:text="Style: Push, Pull, Legs\nSelected: No"
-                    android:textColor="@color/black"
-                    android:textSize="22sp" />
+                    <Button
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="55dp"
+                        android:layout_marginStart="43dp"
+                        android:fontFamily="@font/jockey_one"
+                        android:text="Remove"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:background="@drawable/button_background"
+                        app:backgroundTint="@null"/>
 
-            </FrameLayout>
+                </FrameLayout>
+
+
+            </LinearLayout>
 
         </LinearLayout>
 
     </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

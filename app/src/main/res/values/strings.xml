@@ -6,6 +6,9 @@
     <string name="next">next</string>
     <string name="previous">previous</string>
 
+    <string name="Exercise_List">Exercise List for </string>
+
+    <!-- Strings for saved workout routines page -->
     <string name="saved_workout_selection">Saved Workout Routines</string>
 
     <!-- Strings for header -->
