@@ -28,7 +28,7 @@ public class MainActivity2 extends AppCompatActivity {
         firebaseAuth  =FirebaseAuth.getInstance();
         firebaseFirestore  = FirebaseFirestore.getInstance();
         username = findViewById(R.id.welcome_text);
-        firebaseFirestore.collection(firebaseAuth.getUid()).
+        firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).
                 document("Personal_info").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {

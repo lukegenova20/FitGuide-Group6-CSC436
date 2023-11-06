@@ -145,6 +145,77 @@
 
             </LinearLayout>
 
+            <TextView
+                android:id="@+id/exercise_group_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:gravity="center"
+                android:text="@string/Exercise_Group"
+                android:fontFamily="@font/jockey_one"
+                android:textColor="@color/black"
+                android:textSize="30sp"/>
+
+            <LinearLayout
+                android:id="@+id/scroll_layout_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <FrameLayout
+                    android:id="@+id/exercise_example_layout_2"
+                    android:layout_width="300dp"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="25dp"
+                    android:background="@drawable/button_background"
+                    app:backgroundTint="@null" >
+
+                    <TextView
+                        android:id="@+id/exercise_example_text_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/jockey_one"
+                        android:gravity="center_horizontal"
+                        android:text="Example"
+                        android:textColor="@color/black"
+                        android:textSize="30sp" />
+
+                    <View
+                        android:layout_width="295dp"
+                        android:layout_height="4dp"
+                        android:layout_marginTop="40dp"
+                        android:background="@color/border_color" />
+
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="65dp"
+                        android:layout_marginStart="20dp"
+                        android:fontFamily="@font/jockey_one"
+                        android:text="Add"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:background="@drawable/button_background"
+                        app:backgroundTint="@null"/>
+
+                    <Button
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="65dp"
+                        android:layout_marginStart="180dp"
+                        android:fontFamily="@font/jockey_one"
+                        android:text="Details"
+                        android:textColor="@color/black"
+                        android:textSize="20sp"
+                        android:background="@drawable/button_background"
+                        app:backgroundTint="@null"/>
+
+                </FrameLayout>
+
+
+            </LinearLayout>
+
         </LinearLayout>
 
     </ScrollView>

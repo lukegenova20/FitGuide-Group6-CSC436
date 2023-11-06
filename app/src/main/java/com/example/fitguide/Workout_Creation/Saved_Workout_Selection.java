@@ -57,7 +57,7 @@ public class Saved_Workout_Selection extends AppCompatActivity {
      * Gets each workout routine saved in user data and displays them in the UI.
      */
     private void displayOptions(){
-        DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getUid()).document("Workout_Routines");
+        DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Workout_Routines");
 
         doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override

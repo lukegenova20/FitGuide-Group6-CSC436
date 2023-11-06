@@ -17,16 +17,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fitguide.DummyPage;
 import com.example.fitguide.R;
 import com.example.fitguide.Workout_Classes.Exercise;
 import com.example.fitguide.Workout_Classes.ExerciseList;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
+import java.util.List;
 import java.util.Map;
 
 public class ExerciseListCreation extends AppCompatActivity {
@@ -54,10 +58,9 @@ public class ExerciseListCreation extends AppCompatActivity {
         mainLayout = findViewById(R.id.scroll_layout);
 
         displayExerciseList();
+        showExercises();
         backButton();
         addHeaderListeners();
-
-        // TODO Display list of exercise to add using firebase
 
     }
 
@@ -90,12 +93,12 @@ public class ExerciseListCreation extends AppCompatActivity {
     /*
      * This creates a line programmatically
      */
-    private View createLine(){
+    private View createLine(int width){
         View view = new View(getApplicationContext());
 
         // Converts dp units to pixels.
         float density = getApplicationContext().getResources().getDisplayMetrics().density;
-        int newWidth = Math.round( (float) 195 * density);
+        int newWidth = Math.round( (float) width * density);
         int newHeight = Math.round( (float) 4 * density);
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
                 newWidth,
@@ -145,7 +148,7 @@ public class ExerciseListCreation extends AppCompatActivity {
                 // Remove the currently displayed list and redisplay the whole list.
                 mainLayout.removeAllViews();
                 for (int i = 0; i < list.size(); i++){
-                    displayExercise(list.getExercise(i));
+                    displayExerciseInList(list.getExercise(i));
                 }
 
             }
@@ -155,9 +158,9 @@ public class ExerciseListCreation extends AppCompatActivity {
     }
 
     /*
-     * Display the specific exercise in the UI
+     * Display the specific exercise in the list on the UI
      */
-    private void displayExercise(Exercise exercise){
+    private void displayExerciseInList(Exercise exercise){
         FrameLayout newFrame = new FrameLayout(getApplicationContext());
 
         // Converts dp units to pixels.
@@ -178,7 +181,7 @@ public class ExerciseListCreation extends AppCompatActivity {
 
         newFrame.addView(createText(exercise));
 
-        newFrame.addView(createLine());
+        newFrame.addView(createLine(195));
 
         newFrame.addView(createRemoveButton(exercise));
 
@@ -217,8 +220,146 @@ public class ExerciseListCreation extends AppCompatActivity {
 
         // Display each exercise in the UI.
         for (int i = 0; i < list.size(); i++){
-            displayExercise(list.getExercise(i));
+            displayExerciseInList(list.getExercise(i));
         }
+
+    }
+
+    /*
+     * This function creates the add button for the specific exercise programmatically.
+     */
+    private Button createAddButton(Exercise exercise){
+        Button newButton = new Button(getApplicationContext());
+
+        float density = getApplicationContext().getResources().getDisplayMetrics().density;
+        int newWidth = Math.round( (float) 100 * density);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                newWidth,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+
+        int marginTop = Math.round( (float) 65 * density);
+        int marginStart = Math.round( (float) 20 * density);
+        params.setMargins(marginStart, marginTop, 0, 0);
+
+        newButton.setLayoutParams(params);
+
+        newButton.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
+        newButton.setText("Add");
+        newButton.setTextSize(20);
+        newButton.setBackgroundTintMode(null); // TODO: Might not work. Disable app background tint
+
+        newButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // Add the exercise to the list.
+                boolean result = list.addExercise(exercise);
+                if (result){
+
+                    // Remove the currently displayed list and redisplay the whole list.
+                    LinearLayout exerciseLayout = findViewById(R.id.scroll_layout_2);
+                    exerciseLayout.removeAllViews();
+                    for (int i = 0; i < list.size(); i++){
+                        displayExerciseInList(list.getExercise(i));
+                    }
+                }
+            }
+        });
+
+        return newButton;
+    }
+
+    /*
+     * This function creates the detail button for the specific exercise programmatically.
+     */
+    private Button createDetailButton(Exercise exercise){
+        Button newButton = new Button(getApplicationContext());
+
+        float density = getApplicationContext().getResources().getDisplayMetrics().density;
+        int newWidth = Math.round( (float) 100 * density);
+        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+                newWidth,
+                ViewGroup.LayoutParams.WRAP_CONTENT
+        );
+
+        int marginTop = Math.round( (float) 65 * density);
+        int marginStart = Math.round( (float) 180 * density);
+        params.setMargins(marginStart, marginTop, 0, 0);
+
+        newButton.setLayoutParams(params);
+
+        newButton.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
+        newButton.setText("Detail");
+        newButton.setTextSize(20);
+        newButton.setBackgroundTintMode(null); // TODO: Might not work. Disable app background tint
+
+        newButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // TODO Link to exercise encyclopedia
+                Intent switchIntent = new Intent(v.getContext(), DummyPage.class);
+                startActivity(switchIntent);
+            }
+        });
+
+        return newButton;
+    }
+
+    /*
+     * This function displays an exercise to potentially select on the UI.
+     */
+    private void displayExercise(Exercise exercise){
+        FrameLayout newFrame = new FrameLayout(getApplicationContext());
+
+        // Converts dp units to pixels.
+        float density = getApplicationContext().getResources().getDisplayMetrics().density;
+        int newWidth = Math.round( (float) 300 * density);
+        int newHeight = Math.round( (float) 150 * density);
+
+        FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
+                newWidth,
+                newHeight
+        );
+
+        int margin = Math.round( (float) 25 * density);
+        params.setMargins(0, margin, 0, 0);
+        newFrame.setLayoutParams(params);
+        newFrame.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
+        newFrame.setBackgroundTintMode(null); // TODO: Might not work. Disable app background tint
+
+        newFrame.addView(createText(exercise));
+
+        newFrame.addView(createLine(295));
+
+        newFrame.addView(createAddButton(exercise));
+
+        newFrame.addView(createDetailButton(exercise));
+
+        LinearLayout exerciseLayout = findViewById(R.id.scroll_layout_2);
+        exerciseLayout.addView(newFrame);
+    }
+
+    /*
+     * This function shows what kind of exercises the user can select.
+     */
+    private void showExercises(){
+        TextView text = findViewById(R.id.exercise_group_text);
+        String getText = (String) text.getText();
+        text.setText(getText + muscleGroup + " Exercise Group");
+
+        // TODO Might change collections name for exercises.
+        DocumentReference docs = firebaseFirestore.collection("Exercises").document(muscleGroup);
+        docs.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                List<Exercise> exercises = (List<Exercise>) documentSnapshot.get("Exercises");
+                for (int i = 0; i < exercises.size(); i++){
+                    displayExercise(exercises.get(i));
+                }
+            }
+        });
+
 
     }
 
@@ -233,7 +374,7 @@ public class ExerciseListCreation extends AppCompatActivity {
             public void onClick(View v) {
 
                 // Update routine in the list of workout routines
-                DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getUid()).document("Workout_Routines");
+                DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Workout_Routines");
                 doc.update("Workout Routines", FieldValue.arrayRemove(routine));
                 routine.addExerciseList(day, list);
                 doc.update("Workout Routines", FieldValue.arrayUnion(routine));

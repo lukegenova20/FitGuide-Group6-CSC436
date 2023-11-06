@@ -1,10 +1,13 @@
 package com.example.fitguide.Workout_Creation;
 
+import static android.content.ContentValues.TAG;
+
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +20,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.fitguide.R;
+import com.example.fitguide.Workout_Classes.ExerciseList;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -135,7 +139,7 @@ public class Workout_Creation extends AppCompatActivity {
             currentRoutine = loadRoutine;
 
             // Change the body coverage text for each day in the UI based on the current routine.
-            Button dateButtons[] = new Button[DAYS_IN_WEEK];
+            Button[] dateButtons = new Button[DAYS_IN_WEEK];
             dateButtons[0] = findViewById(R.id.sunday_button);
             dateButtons[1] = findViewById(R.id.monday_button);
             dateButtons[2] = findViewById(R.id.tuesday_button);
@@ -158,24 +162,22 @@ public class Workout_Creation extends AppCompatActivity {
 
             // Create a new Workout Routine
             Map<String, Integer> counter = new HashMap<String, Integer>();
-            firebaseFirestore.collection(firebaseAuth.getUid()).
+            firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).
                     document("Workout_Routines").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                         @Override
                         public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            int result = (int) documentSnapshot.get("Number of Workouts");
-                            counter.put("Counter", result);
+                            int result = documentSnapshot.getLong("Number of Workouts").intValue();
+                            result++;
+                            String name = "Workout" + result;
+                            currentRoutine = new WorkoutRoutine(name, getIntent().getStringExtra("workout_style"));
+
+                            // Update workout routine counter.
+                            firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).
+                                    document("Workout_Routines").update(
+                                            "Number of Workouts", result
+                                    );
                         }
                     });
-            String name = "Workout" + counter.get("Counter").toString();
-            currentRoutine = new WorkoutRoutine(name, getIntent().getStringExtra("workout_style"));
-            counter.put("counter", counter.get("Counter") + 1);
-
-            // Update workout routine counter.
-            firebaseFirestore.collection(firebaseAuth.getUid()).
-                    document("Workout_Routines").update(
-                            "Number of Workouts", counter.get("Counter")
-                    );
-
         }
     }
 
@@ -183,7 +185,7 @@ public class Workout_Creation extends AppCompatActivity {
      * Adds Event handlers for each button that represents the days in the week.
      */
     private void addButtonListeners(){
-        Button dateButtons[] = new Button[DAYS_IN_WEEK];
+        Button[] dateButtons = new Button[DAYS_IN_WEEK];
         dateButtons[0] = findViewById(R.id.sunday_button);
         dateButtons[1] = findViewById(R.id.monday_button);
         dateButtons[2] = findViewById(R.id.tuesday_button);
@@ -213,14 +215,18 @@ public class Workout_Creation extends AppCompatActivity {
                             TextView result = (TextView) layout.getChildAt(3);
                             result.setText(muscleGroup);
 
+                            TextView day = (TextView) layout.getChildAt(1);
                             if (!muscleGroup.equals("Break")){
 
                                 Intent intent = new Intent(Workout_Creation.this,ExerciseListCreation.class);
-                                TextView day = (TextView) layout.getChildAt(1);
                                 intent.putExtra("day", day.getText());
                                 intent.putExtra("routine", currentRoutine);
                                 intent.putExtra("group", muscleGroup);
                                 startActivity(intent);
+                            } else {
+                                currentRoutine.setMuscleGroupToDay((String)day.getText(), "Break");
+                                ExerciseList temp = new ExerciseList("Break");
+                                currentRoutine.addExerciseList((String)day.getText(), temp);
                             }
 
                             return true;
@@ -254,7 +260,7 @@ public class Workout_Creation extends AppCompatActivity {
                 if (currentRoutine.workoutRoutineCompleted()) {
 
                     // Add it to the database.
-                    DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getUid()).document("Workout_Routines");
+                    DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Workout_Routines");
                     doc.update("Workout Routine", FieldValue.arrayUnion(currentRoutine));
 
                     // Go back to Workout Selection.
