@@ -88,7 +88,7 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         newButton.setBackgroundTintMode(null); // TODO: Might not work. Disable app background tint
 
         // TODO: This might not work. Tries to set font to custom google font
-        Typeface font = Typeface.createFromAsset(getAssets(), "jockey_one.tff");
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
         newButton.setTypeface(font);
 
         newButton.setOnClickListener(new View.OnClickListener() {
@@ -125,7 +125,7 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         text.setGravity(Gravity.CENTER_HORIZONTAL);
 
         // TODO: This might not work. Tries to set font to custom google font
-        Typeface font = Typeface.createFromAsset(getAssets(), "jockey_one.tff");
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
         text.setTypeface(font);
 
         return text;
@@ -162,7 +162,7 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         text.setTextColor(getResources().getColor(R.color.black, getTheme()));
 
         // TODO: This might not work. Tries to set font to custom google font
-        Typeface font = Typeface.createFromAsset(getAssets(), "jockey_one.tff");
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
         text.setTypeface(font);
 
         return text;

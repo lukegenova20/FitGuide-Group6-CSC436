@@ -1,7 +1,9 @@
 package com.example.fitguide.Workout_Classes;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /*
@@ -20,7 +22,7 @@ public class WorkoutRoutine implements Serializable {
     private Map<String, ExerciseList> daysToExerciseList;
 
     // Which muscle group is covered on which day.
-    private String muscleGroupToDays[];
+    private List<String> muscleGroupToDays;
 
     // Has the user selected this routine?
     private boolean selected;
@@ -40,7 +42,10 @@ public class WorkoutRoutine implements Serializable {
         daysToExerciseList.put("Friday", null);
         daysToExerciseList.put("Saturday", null);
 
-        muscleGroupToDays = new String[7];
+        muscleGroupToDays = new ArrayList<String>();
+        for (int i = 0; i < 7; i++){
+            muscleGroupToDays.add("");
+        }
 
         selected = false;
 
@@ -67,19 +72,19 @@ public class WorkoutRoutine implements Serializable {
      */
     public void setMuscleGroupToDay(String day, String muscleGroup){
         if (day.equals("Sunday")){
-            muscleGroupToDays[0] = muscleGroup;
+            muscleGroupToDays.set(0, muscleGroup);
         } else if (day.equals("Monday")){
-            muscleGroupToDays[1] = muscleGroup;
+            muscleGroupToDays.set(1, muscleGroup);
         } else if (day.equals("Tuesday")){
-            muscleGroupToDays[2] = muscleGroup;
+            muscleGroupToDays.set(2, muscleGroup);
         } else if (day.equals("Wednesday")){
-            muscleGroupToDays[3] = muscleGroup;
+            muscleGroupToDays.set(3, muscleGroup);
         } else if (day.equals("Thursday")){
-            muscleGroupToDays[4] = muscleGroup;
+            muscleGroupToDays.set(4, muscleGroup);
         } else if (day.equals("Friday")){
-            muscleGroupToDays[5] = muscleGroup;
+            muscleGroupToDays.set(5, muscleGroup);
         } else if (day.equals("Saturday")){
-            muscleGroupToDays[6] = muscleGroup;
+            muscleGroupToDays.set(6, muscleGroup);
         }
     }
 
@@ -87,7 +92,7 @@ public class WorkoutRoutine implements Serializable {
      * Gets the specific muscle group on the specific day..
      */
     public String getMuscleGroup(int index){
-        return muscleGroupToDays[index];
+        return muscleGroupToDays.get(index);
     }
 
     /*
@@ -117,6 +122,13 @@ public class WorkoutRoutine implements Serializable {
     }
 
     /*
+     * Setter for Workout Name
+     */
+    public void setName(String newName) {
+        name = newName;
+    }
+
+    /*
      * Getter for Workout Style
      */
     public String getStyle() {
@@ -133,7 +145,7 @@ public class WorkoutRoutine implements Serializable {
     /*
      * Getter for the array that has what muscle group is covered for each day.
      */
-    public String[] getMuscleGroupToDays() {
+    public List<String> getMuscleGroupToDays() {
         return muscleGroupToDays;
     }
 

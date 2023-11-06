@@ -138,6 +138,13 @@ public class Workout_Creation extends AppCompatActivity {
         if (loadRoutine != null){
             currentRoutine = loadRoutine;
 
+            // Save progress made in the exerice list creation page.
+            ExerciseList list = (ExerciseList) getIntent().getSerializableExtra("exerciseList");
+            if (list != null){
+                String day = getIntent().getStringExtra("exerciseListDay");
+                currentRoutine.addExerciseList(day, list);
+            }
+
             // Change the body coverage text for each day in the UI based on the current routine.
             Button[] dateButtons = new Button[DAYS_IN_WEEK];
             dateButtons[0] = findViewById(R.id.sunday_button);
@@ -159,25 +166,7 @@ public class Workout_Creation extends AppCompatActivity {
         } else {
             String style = getIntent().getStringExtra("workout_style");
             loadMuscleGroups(style);
-
-            // Create a new Workout Routine
-            Map<String, Integer> counter = new HashMap<String, Integer>();
-            firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).
-                    document("Workout_Routines").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                        @Override
-                        public void onSuccess(DocumentSnapshot documentSnapshot) {
-                            int result = documentSnapshot.getLong("Number of Workouts").intValue();
-                            result++;
-                            String name = "Workout" + result;
-                            currentRoutine = new WorkoutRoutine(name, getIntent().getStringExtra("workout_style"));
-
-                            // Update workout routine counter.
-                            firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).
-                                    document("Workout_Routines").update(
-                                            "Number of Workouts", result
-                                    );
-                        }
-                    });
+            currentRoutine = new WorkoutRoutine("", getIntent().getStringExtra("workout_style"));
         }
     }
 
@@ -259,13 +248,30 @@ public class Workout_Creation extends AppCompatActivity {
                 // Checks if the routine has been completed.
                 if (currentRoutine.workoutRoutineCompleted()) {
 
-                    // Add it to the database.
+
                     DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Workout_Routines");
-                    doc.update("Workout Routine", FieldValue.arrayUnion(currentRoutine));
+                    doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                                @Override
+                                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                                    int result = documentSnapshot.getLong("Number of Workouts").intValue();
+                                    result++;
+
+                                    // Set complete name of the workout.
+                                    String name = "Workout" + result;
+                                    currentRoutine.setName(name);
+
+                                    // Update workout routine counter.
+                                    doc.update("Number of Workouts", result);
+
+                                    // Add the routine to the database.
+                                    doc.update("Workout Routines", FieldValue.arrayUnion(currentRoutine));
+                                }
+                            });
 
                     // Go back to Workout Selection.
                     Intent intent = new Intent(Workout_Creation.this, Workout_Selection.class);
                     startActivity(intent);
+                    finish();
                     muscleGroups.clear();
                 } else {
 

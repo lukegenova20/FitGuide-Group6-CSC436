@@ -14,12 +14,15 @@ public class ExerciseList implements Serializable {
 
     private String muscleGroup;
 
-
     public ExerciseList(){}
 
     public ExerciseList(String group){
         muscleGroup = group;
         exerciseList = new ArrayList<Exercise>();
+
+        if (muscleGroup.equals("Break")){
+            exerciseList.add(new Exercise("Break"));
+        }
     }
 
     /*
@@ -75,4 +78,5 @@ public class ExerciseList implements Serializable {
      * Getter for the muscle group the list covers.
      */
     public String getMuscleGroup(){ return muscleGroup;}
+
 }

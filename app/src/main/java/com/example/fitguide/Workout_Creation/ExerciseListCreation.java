@@ -1,5 +1,7 @@
 package com.example.fitguide.Workout_Creation;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.core.content.res.ResourcesCompat;
@@ -22,7 +24,9 @@ import com.example.fitguide.R;
 import com.example.fitguide.Workout_Classes.Exercise;
 import com.example.fitguide.Workout_Classes.ExerciseList;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -30,6 +34,8 @@ import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -47,6 +53,9 @@ public class ExerciseListCreation extends AppCompatActivity {
     String muscleGroup;
 
     LinearLayout mainLayout;
+
+    boolean newList;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,8 +92,7 @@ public class ExerciseListCreation extends AppCompatActivity {
 
         text.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        // TODO: This might not work. Tries to set font to custom google font
-        Typeface font = Typeface.createFromAsset(getAssets(), "jockey_one.tff");
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
         text.setTypeface(font);
 
         return text;
@@ -109,7 +117,6 @@ public class ExerciseListCreation extends AppCompatActivity {
         params.setMargins(0, margin, 0, 0);
         view.setLayoutParams(params);
 
-        // TODO: This might not work.
         view.setBackground(ResourcesCompat.getDrawable(getResources(), R.color.border_color, getTheme()));
 
         return view;
@@ -128,7 +135,7 @@ public class ExerciseListCreation extends AppCompatActivity {
 
         float density = getApplicationContext().getResources().getDisplayMetrics().density;
         int marginTop = Math.round( (float) 55 * density);
-        int marginStart = Math.round( (float) 43 * density);
+        int marginStart = Math.round( (float) 57 * density);
         params.setMargins(marginStart, marginTop, 0, 0);
 
         newButton.setLayoutParams(params);
@@ -136,7 +143,10 @@ public class ExerciseListCreation extends AppCompatActivity {
         newButton.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
         newButton.setText("Remove");
         newButton.setTextSize(20);
-        newButton.setBackgroundTintMode(null); // TODO: Might not work. Disable app background tint
+        newButton.setBackgroundTintMode(null);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
+        newButton.setTypeface(font);
 
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -177,7 +187,7 @@ public class ExerciseListCreation extends AppCompatActivity {
         params.setMargins(0, margin, 0, 0);
         newFrame.setLayoutParams(params);
         newFrame.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
-        newFrame.setBackgroundTintMode(null); // TODO: Might not work. Disable app background tint
+        newFrame.setBackgroundTintMode(null);
 
         newFrame.addView(createText(exercise));
 
@@ -198,7 +208,7 @@ public class ExerciseListCreation extends AppCompatActivity {
 
         TextView text = findViewById(R.id.exercise_text);
         String getText = (String) text.getText();
-        text.setText( getText + day);
+        text.setText( getText + " " + day);
 
         // Get the exercise list for the specific day.
         routine = (WorkoutRoutine) getIntent().getSerializableExtra("routine");
@@ -207,12 +217,14 @@ public class ExerciseListCreation extends AppCompatActivity {
         // Create new exercise if the user didn't have one for a specific day.
         if (mapping.get(day) == null){
             list = new ExerciseList(muscleGroup);
+            newList = true;
         } else {
             list = mapping.get(day);
-
+            newList = false;
             // If the user selects a new muscle group, create a new Exercise.
             if (!(list.getMuscleGroup().equals(muscleGroup))){
                 list = new ExerciseList(muscleGroup);
+                newList = true;
             }
         }
 
@@ -229,6 +241,12 @@ public class ExerciseListCreation extends AppCompatActivity {
      * This function creates the add button for the specific exercise programmatically.
      */
     private Button createAddButton(Exercise exercise){
+        AlertDialog.Builder builder = new AlertDialog.Builder(ExerciseListCreation.this);
+        builder.setIcon(R.drawable.baseline_error_24);
+        builder.setTitle(" ");
+        builder.setCancelable(true);
+
+
         Button newButton = new Button(getApplicationContext());
 
         float density = getApplicationContext().getResources().getDisplayMetrics().density;
@@ -247,7 +265,10 @@ public class ExerciseListCreation extends AppCompatActivity {
         newButton.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
         newButton.setText("Add");
         newButton.setTextSize(20);
-        newButton.setBackgroundTintMode(null); // TODO: Might not work. Disable app background tint
+        newButton.setBackgroundTintMode(null);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
+        newButton.setTypeface(font);
 
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -258,11 +279,15 @@ public class ExerciseListCreation extends AppCompatActivity {
                 if (result){
 
                     // Remove the currently displayed list and redisplay the whole list.
-                    LinearLayout exerciseLayout = findViewById(R.id.scroll_layout_2);
-                    exerciseLayout.removeAllViews();
+                    mainLayout.removeAllViews();
                     for (int i = 0; i < list.size(); i++){
                         displayExerciseInList(list.getExercise(i));
                     }
+                } else {
+                    // If the user already added the exercise, notify the user.
+                    builder.setMessage("You already added the exercise to the list.");
+                    AlertDialog alertDialog = builder.create();
+                    alertDialog.show();
                 }
             }
         });
@@ -292,7 +317,10 @@ public class ExerciseListCreation extends AppCompatActivity {
         newButton.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
         newButton.setText("Detail");
         newButton.setTextSize(20);
-        newButton.setBackgroundTintMode(null); // TODO: Might not work. Disable app background tint
+        newButton.setBackgroundTintMode(null);
+
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
+        newButton.setTypeface(font);
 
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -326,7 +354,7 @@ public class ExerciseListCreation extends AppCompatActivity {
         params.setMargins(0, margin, 0, 0);
         newFrame.setLayoutParams(params);
         newFrame.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
-        newFrame.setBackgroundTintMode(null); // TODO: Might not work. Disable app background tint
+        newFrame.setBackgroundTintMode(null);
 
         newFrame.addView(createText(exercise));
 
@@ -346,16 +374,22 @@ public class ExerciseListCreation extends AppCompatActivity {
     private void showExercises(){
         TextView text = findViewById(R.id.exercise_group_text);
         String getText = (String) text.getText();
-        text.setText(getText + muscleGroup + " Exercise Group");
+        text.setText(getText + " " + muscleGroup + " Exercise Group");
 
         // TODO Might change collections name for exercises.
         DocumentReference docs = firebaseFirestore.collection("Exercises").document(muscleGroup);
-        docs.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+
+        docs.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                List<Exercise> exercises = (List<Exercise>) documentSnapshot.get("Exercises");
-                for (int i = 0; i < exercises.size(); i++){
-                    displayExercise(exercises.get(i));
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if (task.isSuccessful()){
+                    DocumentSnapshot snap = task.getResult();
+                    if (snap.exists()){
+                        ExerciseList exerciseList = snap.toObject(ExerciseList.class);
+                        for (int i = 0; i < exerciseList.size(); i++){
+                            displayExercise(exerciseList.getExercise(i));
+                        }
+                    }
                 }
             }
         });
@@ -373,15 +407,27 @@ public class ExerciseListCreation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                // Update routine in the list of workout routines
-                DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Workout_Routines");
-                doc.update("Workout Routines", FieldValue.arrayRemove(routine));
-                routine.addExerciseList(day, list);
-                doc.update("Workout Routines", FieldValue.arrayUnion(routine));
+                if (!newList) {
 
+                    // Update routine in the list of workout routines
+                    DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Workout_Routines");
+                    doc.update("Workout Routines", FieldValue.arrayRemove(routine)).addOnSuccessListener(new OnSuccessListener<Void>() {
+                        @Override
+                        public void onSuccess(Void unused) {
+
+                            // If the routine was found, then complete the routine update.
+                            routine.addExerciseList(day, list);
+                            doc.update("Workout Routines", FieldValue.arrayUnion(routine));
+                        }
+                    });
+                }
                 // Go back to the workout creation page.
                 Intent switchIntent = new Intent(getApplicationContext(), Workout_Creation.class);
+                switchIntent.putExtra("exerciseList", list);
+                switchIntent.putExtra("exerciseListDay", day);
+                switchIntent.putExtra("loading", routine);
                 startActivity(switchIntent);
+                finish();
             }
         });
 
