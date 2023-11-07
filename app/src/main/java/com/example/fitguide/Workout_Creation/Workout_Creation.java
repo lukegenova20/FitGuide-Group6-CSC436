@@ -2,6 +2,7 @@ package com.example.fitguide.Workout_Creation;
 
 import static android.content.ContentValues.TAG;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -22,7 +23,10 @@ import android.widget.Toast;
 import com.example.fitguide.R;
 import com.example.fitguide.Workout_Classes.ExerciseList;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -137,6 +141,19 @@ public class Workout_Creation extends AppCompatActivity {
 
         if (loadRoutine != null){
             currentRoutine = loadRoutine;
+
+            DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Workout_Routines");
+            doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    WorkoutRoutineList routineList = documentSnapshot.toObject(WorkoutRoutineList.class);
+
+                    // Remove the old routine from the list if its in the list.
+                    routineList.removeWorkoutRoutine(currentRoutine);
+
+                    doc.set(routineList);
+                }
+            });
 
             // Save progress made in the exerice list creation page.
             ExerciseList list = (ExerciseList) getIntent().getSerializableExtra("exerciseList");
@@ -253,26 +270,30 @@ public class Workout_Creation extends AppCompatActivity {
                     doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                                 @Override
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
-                                    int result = documentSnapshot.getLong("Number of Workouts").intValue();
-                                    result++;
+                                    WorkoutRoutineList routineList = documentSnapshot.toObject(WorkoutRoutineList.class);
+
+                                    int result = routineList.getNumberOfRoutines() + 1;
 
                                     // Set complete name of the workout.
                                     String name = "Workout" + result;
                                     currentRoutine.setName(name);
 
-                                    // Update workout routine counter.
-                                    doc.update("Number of Workouts", result);
+                                    // Add the routine to the list.
+                                    routineList.addWorkoutRoutine(currentRoutine);
 
-                                    // Add the routine to the database.
-                                    doc.update("Workout Routines", FieldValue.arrayUnion(currentRoutine));
+                                    // Update the document.
+                                    doc.set(routineList).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            Intent intent = new Intent(Workout_Creation.this, Workout_Selection.class);
+                                            startActivity(intent);
+                                            finish();
+                                            muscleGroups.clear();
+                                        }
+                                    });
                                 }
                             });
 
-                    // Go back to Workout Selection.
-                    Intent intent = new Intent(Workout_Creation.this, Workout_Selection.class);
-                    startActivity(intent);
-                    finish();
-                    muscleGroups.clear();
                 } else {
 
                     // If the routine hasn't been completed, notify the user.

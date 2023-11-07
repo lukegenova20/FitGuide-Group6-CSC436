@@ -15,6 +15,7 @@ import android.widget.Toast;
 import com.example.fitguide.DummyPage;
 import com.example.fitguide.R;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -94,12 +95,12 @@ public class Workout_Selection extends AppCompatActivity {
             public void onClick(View v) {
 
                 // If the user didn't create any routines, notify the user.
-                DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getUid()).document("Workout_Routines");
+                DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Workout_Routines");
                 doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        List<WorkoutRoutine> routineList = (List<WorkoutRoutine>) documentSnapshot.get("Workout Routines");
-                        if (routineList.size() == 0){
+                        WorkoutRoutineList routineList = documentSnapshot.toObject(WorkoutRoutineList.class);
+                        if (routineList.getRoutineList().size() == 0){
                             builder.setMessage("You haven't made any workout routines yet!");
                             AlertDialog alertDialog = builder.create();
                             alertDialog.show();

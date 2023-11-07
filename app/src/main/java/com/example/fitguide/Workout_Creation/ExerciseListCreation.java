@@ -24,6 +24,7 @@ import com.example.fitguide.R;
 import com.example.fitguide.Workout_Classes.Exercise;
 import com.example.fitguide.Workout_Classes.ExerciseList;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -411,26 +412,41 @@ public class ExerciseListCreation extends AppCompatActivity {
 
                     // Update routine in the list of workout routines
                     DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Workout_Routines");
-                    doc.update("Workout Routines", FieldValue.arrayRemove(routine)).addOnSuccessListener(new OnSuccessListener<Void>() {
-                        @Override
-                        public void onSuccess(Void unused) {
 
-                            // If the routine was found, then complete the routine update.
+                    doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                        @Override
+                        public void onSuccess(DocumentSnapshot documentSnapshot) {
+                            WorkoutRoutineList routineList = documentSnapshot.toObject(WorkoutRoutineList.class);
+
+                            routineList.removeWorkoutRoutine(routine);
                             routine.addExerciseList(day, list);
-                            doc.update("Workout Routines", FieldValue.arrayUnion(routine));
+                            routineList.addWorkoutRoutine(routine);
+
+                            doc.set(routineList).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    // Go back to the workout creation page.
+                                    Intent switchIntent = new Intent(getApplicationContext(), Workout_Creation.class);
+                                    switchIntent.putExtra("exerciseList", list);
+                                    switchIntent.putExtra("exerciseListDay", day);
+                                    switchIntent.putExtra("loading", routine);
+                                    startActivity(switchIntent);
+                                    finish();
+                                }
+                            });
                         }
                     });
+                } else {
+                    // Go back to the workout creation page.
+                    Intent switchIntent = new Intent(getApplicationContext(), Workout_Creation.class);
+                    switchIntent.putExtra("exerciseList", list);
+                    switchIntent.putExtra("exerciseListDay", day);
+                    switchIntent.putExtra("loading", routine);
+                    startActivity(switchIntent);
+                    finish();
                 }
-                // Go back to the workout creation page.
-                Intent switchIntent = new Intent(getApplicationContext(), Workout_Creation.class);
-                switchIntent.putExtra("exerciseList", list);
-                switchIntent.putExtra("exerciseListDay", day);
-                switchIntent.putExtra("loading", routine);
-                startActivity(switchIntent);
-                finish();
             }
         });
-
     }
 
 

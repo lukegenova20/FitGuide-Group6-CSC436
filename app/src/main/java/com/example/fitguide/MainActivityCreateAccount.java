@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -111,13 +112,9 @@ public class MainActivityCreateAccount extends AppCompatActivity {
                                                         });
 
                                                 // Create document for workout info.
-                                                Map<String, Object> workoutData = new HashMap<>();
-                                                workoutData.put("Number of Workouts", 0);
-                                                List<WorkoutRoutine> workoutRoutines = new ArrayList<WorkoutRoutine>();
-                                                workoutData.put("Workout Routines", workoutRoutines);
-                                                workoutData.put("Selected Workout", null);
+                                                WorkoutRoutineList routineList = new WorkoutRoutineList(null);
                                                 firebaseFirestore.collection(authResult.getUser().getUid()).
-                                                        document("Workout_Routines").set(workoutData).
+                                                        document("Workout_Routines").set(routineList).
                                                         addOnFailureListener(new OnFailureListener() {
                                                             @Override
                                                             public void onFailure(@NonNull Exception e) {

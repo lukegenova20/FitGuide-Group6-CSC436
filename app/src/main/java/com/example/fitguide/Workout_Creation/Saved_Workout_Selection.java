@@ -21,13 +21,16 @@ import android.widget.Toast;
 import com.example.fitguide.DummyPage;
 import com.example.fitguide.R;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class Saved_Workout_Selection extends AppCompatActivity {
 
@@ -62,9 +65,9 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                List<WorkoutRoutine> routineList = (List<WorkoutRoutine>) documentSnapshot.get("Workout Routines");
-                for (int i = 0; i < routineList.size(); i++){
-                    createFrameLayout(routineList.get(i));
+                WorkoutRoutineList routineList = documentSnapshot.toObject(WorkoutRoutineList.class);
+                for (int i = 0; i < routineList.getRoutineList().size(); i++){
+                    createFrameLayout(routineList.getRoutine(i));
                 }
             }
         });
@@ -75,21 +78,28 @@ public class Saved_Workout_Selection extends AppCompatActivity {
      */
     private Button createButton(WorkoutRoutine routine){
 
+        float density = getApplicationContext().getResources().getDisplayMetrics().density;
+        int newWidth = Math.round( (float) 100 * density);
         Button newButton = new Button(getApplicationContext());
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT,
-                ViewGroup.LayoutParams.MATCH_PARENT
+                newWidth,
+                ViewGroup.LayoutParams.WRAP_CONTENT
         );
 
-        newButton.setLayoutParams(params);
-        newButton.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
-        newButton.setText("No Text");
-        newButton.setTextSize(0);
-        newButton.setBackgroundTintMode(null); // TODO: Might not work. Disable app background tint
+        int marginTop = Math.round( (float) 110 * density);
+        int marginStart = Math.round( (float) 115 * density);
+        params.setMargins(marginStart, marginTop, 0, 0);
 
-        // TODO: This might not work. Tries to set font to custom google font
+        newButton.setLayoutParams(params);
+        newButton.setText("Change");
+        newButton.setTextSize(20);
+        newButton.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
+        newButton.setBackgroundTintMode(null);
+        newButton.setTextColor(getResources().getColor(R.color.black, getTheme()));
+
         Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
         newButton.setTypeface(font);
+
 
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -117,14 +127,14 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         );
 
         text.setLayoutParams(params);
+        String name = routine.getName();
 
-        text.setText(routine.getName());
+        text.setText(name);
         text.setTextSize(30);
         text.setTextColor(getResources().getColor(R.color.black, getTheme()));
 
         text.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        // TODO: This might not work. Tries to set font to custom google font
         Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
         text.setTypeface(font);
 
@@ -157,11 +167,10 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         if (routine.isSelected()){
             selected = "Yes";
         }
-        text.setText("Style: " + routine.getStyle() + "\nSelected" + selected);
-        text.setTextSize(30);
+        text.setText("Style: " + routine.getStyle() + "\nSelected: " + selected);
+        text.setTextSize(22);
         text.setTextColor(getResources().getColor(R.color.black, getTheme()));
 
-        // TODO: This might not work. Tries to set font to custom google font
         Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
         text.setTypeface(font);
 
@@ -187,7 +196,6 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         params.setMargins(0, margin, 0, 0);
         view.setLayoutParams(params);
 
-        // TODO: This might not work.
         view.setBackground(ResourcesCompat.getDrawable(getResources(), R.color.border_color, getTheme()));
 
         return view;
@@ -202,7 +210,7 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         // Converts dp units to pixels.
         float density = getApplicationContext().getResources().getDisplayMetrics().density;
         int newWidth = Math.round( (float) 330 * density);
-        int newHeight = Math.round( (float) 130 * density);
+        int newHeight = Math.round( (float) 170 * density);
 
         FrameLayout.LayoutParams params = new FrameLayout.LayoutParams(
                 newWidth,
@@ -213,8 +221,8 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         params.setMargins(0, margin, 0, 0);
         newFrame.setLayoutParams(params);
 
-        // Add Button
-        newFrame.addView(createButton(routine));
+        newFrame.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
+        newFrame.setBackgroundTintMode(null);
 
         // Add Name of Routine
         newFrame.addView(createFirstText(routine));
@@ -224,6 +232,9 @@ public class Saved_Workout_Selection extends AppCompatActivity {
 
         // Add Style of Routine and if it has been selected by the user.
         newFrame.addView(createSecondText(routine));
+
+        // Add Button
+        newFrame.addView(createButton(routine));
 
         mainLayout.addView(newFrame);
     }
