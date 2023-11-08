@@ -21,7 +21,9 @@ public class NewDietActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_diet);
 
-        TextView designDiet = findViewById(R.id.textview_greekyogurt);
+        TextView greekYogurt = findViewById(R.id.textview_greekyogurt);
+        TextView eggs = findViewById(R.id.textview_eggs);
+        TextView oatmeal = findViewById(R.id.textview_oatmeal);
         Button backButton = findViewById(R.id.back_button);
 
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -35,7 +37,7 @@ public class NewDietActivity extends AppCompatActivity {
 
 
 
-        designDiet.setOnClickListener(new View.OnClickListener() {
+        greekYogurt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DietGreekYogurt.class);
@@ -43,6 +45,21 @@ public class NewDietActivity extends AppCompatActivity {
             }
         });
 
+        eggs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietEggs.class);
+                startActivity(intent);
+            }
+        });
+
+        oatmeal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietOatmeal.class);
+                startActivity(intent);
+            }
+        });
 
     }
 }

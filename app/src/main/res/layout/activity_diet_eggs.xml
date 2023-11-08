@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondFragment">
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+
+
+
+        <TextView
+            android:id="@+id/textview_second"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ingredients"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textview_third"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+
+
+        <TextView
+            android:id="@+id/textview_third"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="-2 large eggs
+           \n- 1/2 cup fresh spinach, washed and chopped
+           \n- 1/2 cup cherry tomatoes, halved
+           \n- 1 tablespoon olive oil or cooking spray
+           \n- Salt and pepper to taste"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fourth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_second"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/textview_fourth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Nutrition Facts:"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fifth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/textview_fifth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Calories: Approximately 200-250 calories\nProtein: About 12-14 grams\nCarbohydrates: Around 4-6 grams\nDietary Fiber: Approximately 2-3 grams\nSugars: About 2-3 grams\nFat: Around 15-18 grams\nSaturated Fat: Approximately 5-8 grams\nCholesterol: Higher in cholesterol due to the eggs.\nSodium: Approximately 300-400 milligrams\nCalcium: Approximately 100-150 milligrams"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fourth" />
+
+
+        <TextView
+            android:id="@+id/textview_sixth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Instructions:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fifth"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/textview_seventh"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Crack eggs into a bowl and add a pinch of salt and pepper and whisk until combined. Sauté tomatoes over medium heat for 2-3 minutes, then add spinach to the pan and let cook for 1-2 more minutes. Reduce the heat to medium-low and add in the ggs and let cook until mostly cooked, but still slightly runny. Remove from skillet and season with salt and pepper to taste."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_sixth"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            app:layout_constraintTop_toBottomOf="@+id/textview_seventh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp" />
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="365dp"
+            android:layout_height="279dp"
+            android:src="@drawable/eggs"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <!-- Adjust the constraint here -->
+        app:srcCompat="@drawable/eggs"
+        android:contentDescription="Image" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+

@@ -7,12 +7,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-public class DietGreekYogurt extends AppCompatActivity {
+public class DietEggs extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diet_greek_yogurt);
+        setContentView(R.layout.activity_diet_eggs);
 
         Button backButton = findViewById(R.id.back_button);
 
