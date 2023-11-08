@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
+    android:id="@+id/saved_main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Workout_Creation.Workout_Selection"
-    tools:layout_editor_absoluteX="1dp"
-    tools:layout_editor_absoluteY="1dp">
+    tools:context=".Workout_Creation.Saved_Workout_Selection">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
@@ -58,35 +54,34 @@
             app:tint="@color/icon_color" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/new_workout"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="180dp"
-        android:background="@drawable/button_background"
-        android:fontFamily="@font/jockey_one"
-        android:text="@string/new_workout"
-        android:textColor="@color/black"
-        android:textSize="23sp"
-        app:backgroundTint="@null"
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header" />
+        app:layout_constraintTop_toBottomOf="@+id/header">
 
-    <Button
-        android:id="@+id/load_workout"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="100dp"
-        android:text="@string/load_workout"
-        android:textColor="@color/black"
-        android:fontFamily="@font/jockey_one"
-        android:textSize="23sp"
-        android:background="@drawable/button_background"
-        app:backgroundTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_workout" />
+        <LinearLayout
+            android:id="@+id/loaded_workout_linear_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="@string/saved_workout_selection"
+                android:textColor="@color/black"
+                android:textSize="30sp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

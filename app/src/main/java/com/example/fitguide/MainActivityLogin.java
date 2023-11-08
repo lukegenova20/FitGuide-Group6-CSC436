@@ -14,6 +14,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.fitguide.Workout_Classes.Exercise;
+import com.example.fitguide.Workout_Classes.ExerciseList;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.textfield.TextInputEditText;
@@ -24,7 +26,9 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.ktx.Firebase;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class MainActivityLogin extends AppCompatActivity {
@@ -63,6 +67,7 @@ public class MainActivityLogin extends AppCompatActivity {
             }
         });
 
+        //createExerciseDatabase();
 
         sign_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -108,6 +113,21 @@ public class MainActivityLogin extends AppCompatActivity {
                 }
         );
 
+
+    }
+
+
+    // utility function to add data into database programmatically
+    private void createExerciseDatabase(){
+        FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
+
+        DocumentReference docs = firebaseFirestore.collection("Exercises").document("Pull");
+        //Map<String, Object> data = new HashMap<String, Object>();
+        ExerciseList list = new ExerciseList("");
+        list.addExercise(new Exercise("Lat Pulldown"));
+        list.addExercise(new Exercise("Cable Row"));
+        //data.put("Exercises", list);
+        docs.set(list);
 
     }
 }
