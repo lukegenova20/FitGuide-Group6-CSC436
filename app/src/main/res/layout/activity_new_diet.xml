@@ -75,10 +75,51 @@
                 android:id="@+id/textview_lunch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="LUNCH"
+                android:text="\nLUNCH"
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_gravity="start" />
+
+            <!-- Chicken -->
+            <TextView
+                android:id="@+id/textview_chicken"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chicken"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true" />
+
+            <!-- Tuna -->
+            <TextView
+                android:id="@+id/textview_tuna"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tuna Salad"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true" />
+
+            <!-- Quinoa -->
+            <TextView
+                android:id="@+id/textview_quinoa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Quinoa Salad"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true" />
+
+            <!-- DINNER -->
+            <TextView
+                android:id="@+id/textview_dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="\nDINNER"
+                android:textSize="25sp"
+                android:textStyle="bold"
+                android:layout_gravity="start" />
+
 
             <Button
                 android:id="@+id/back_button"

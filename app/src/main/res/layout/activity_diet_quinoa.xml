@@ -6,10 +6,14 @@
     android:layout_height="match_parent">
 
 
+
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:padding="16dp">
+
+
 
 
         <TextView
@@ -19,7 +23,7 @@
             android:layout_marginTop="16dp"
             android:text="Ingredients"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/textview_third"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.468"
             app:layout_constraintStart_toStartOf="parent"
@@ -28,18 +32,29 @@
 
 
 
+
         <TextView
             android:id="@+id/textview_third"
             android:layout_width="364dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="\n- 6 ounces (170g) of non-fat or low-fat Greek yogurt\n- 1/2 cup of mixed berries \n- A small handful (about 1 tablespoon) of sliced almonds\n"
-            app:layout_constraintBottom_toTopOf="@+id/textview_fifth"
+            android:text="- 1 cup quinoa
+            \n- 3 1/2 cups water
+            \n- 1 cup canned chickpeas, drained and rinsed
+            \n- 1 cucumber, diced
+            \n- 1/4 cup fresh parsley, chopped
+            \n- 1/4 cup red onion, finely chopped
+            \n- 1/4 cup tahini
+            \n- 2 tablespoons fresh lemon juice
+            \n- 1 clove garlic, minced
+            \n- 1/2 teaspoon ground cumin"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fourth"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView"
-            app:layout_constraintVertical_bias="1.0" />
+            app:layout_constraintTop_toBottomOf="@+id/textview_second"
+            app:layout_constraintVertical_bias="0.0" />
+
 
         <TextView
             android:id="@+id/textview_fourth"
@@ -53,14 +68,25 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="0.0" />
 
+
         <TextView
             android:id="@+id/textview_fifth"
             android:layout_width="364dp"
             android:layout_height="wrap_content"
-            android:text="Calories: Approximately 200-220 calories\nProtein: About 15-20 grams\nCarbohydrates: Around 20-25 grams\nDietary Fiber: Approximately 3-4 grams\nSugars: About 10-15 grams\nFat: Around 5-7 grams\nSaturated Fat: Approximately 1-2 grams\nCholesterol: Depends on the yogurt, but generally low\nSodium: Approximately 40-60 milligrams\nCalcium: Approximately 200-250 milligrams"
+            android:text="Calories: 350
+            \nProtein: 10g
+            \nCarbs: 53g
+            \nDietary Fiber: 8g
+            \nSugars: 2g
+            \nFat: 12g
+            \nSaturated Fat: 2g
+            \nCholesterol: 0mg
+            \nSodium: 180mg
+            \nCalcium: 85mg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textview_fourth" />
+
 
         <TextView
             android:id="@+id/textview_sixth"
@@ -73,17 +99,19 @@
             android:textStyle="bold"
             />
 
+
         <TextView
             android:id="@+id/textview_seventh"
             android:layout_width="364dp"
             android:layout_height="wrap_content"
-            android:text="First measure 6 ounces of Greek yogurt and place in bowl. Next wash and prepare 1/2 cup of mixed berries. Then sprinkle the berries on top of the yogurt. To add a touch of healthy fats, sprinkle 1 tablespoon of sliced almonds on top."
+            android:text="Start by cooking quinoa in a saucepan with water and bring it to a boil. Once boiling, bring to low heat until water is absorbed then remove from heat and let cool. Whisk tahini, lemon juice, water, minced garlic, cumin, salt and pepper in a bowl for the dressing. In another bowl, add the quinoa, chickpeas, cucumber, parsley, and red onion. Pour the dressing over the salad and toss the ingredients. Add salt and pepper to taste and serve."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.489"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textview_sixth"
             app:layout_constraintVertical_bias="0.0" />
+
 
         <Button
             android:id="@+id/back_button"
@@ -96,19 +124,25 @@
             app:layout_constraintBottom_toBottomOf="parent"
             android:layout_marginTop="16dp" />
 
+
         <ImageView
             android:id="@+id/imageView"
-            android:layout_width="365dp"
-            android:layout_height="279dp"
-            android:src="@drawable/greek_yogurt"
-            tools:layout_editor_absoluteX="2dp"
-            tools:layout_editor_absoluteY="146dp" />
+            android:layout_width="265dp"
+            android:layout_height="179dp"
+            android:src="@drawable/quinoa"
+            tools:layout_editor_absoluteX="61dp"
+            tools:layout_editor_absoluteY="103dp" />
+
 
         <!-- Adjust the constraint here -->
-        app:srcCompat="@drawable/greek_yogurt"
+        app:srcCompat="@drawable/quinoa"
         android:contentDescription="Image" />
+
+
+
 
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>
+

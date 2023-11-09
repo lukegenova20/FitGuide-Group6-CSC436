@@ -58,6 +58,9 @@
         <activity android:name=".DietGreekYogurt" />
         <activity android:name=".DietOatmeal" />
         <activity android:name=".DietEggs" />
+        <activity android:name=".DietChicken" />
+        <activity android:name=".DietTuna" />
+        <activity android:name=".DietQuinoa" />
         <activity android:name=".NewDietActivity" />
     </application>
 
