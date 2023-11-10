@@ -23,7 +23,7 @@ public class WorkoutListActivity extends AppCompatActivity {
 
         // Create a list of dummy workouts
         String[] workouts = new String[]{
-                "Workout 1",
+                "Bench Press",
                 "Workout 2",
                 "Workout 3",
                 // ... Add as many as you need

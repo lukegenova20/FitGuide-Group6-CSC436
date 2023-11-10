@@ -74,4 +74,16 @@ dependencies {
     androidTestImplementation(platform("androidx.compose:compose-bom:2023.03.00"))
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")
+    // Espresso contrib for additional matchers
+    androidTestImplementation("androidx.test.espresso:espresso-contrib:3.4.0")
+    // Espresso intents for intent testing
+    androidTestImplementation("androidx.test.espresso:espresso-intents:3.4.0")
+    // JUnit4 rules
+    androidTestImplementation("androidx.test:rules:1.4.0")
+    // JUnit4 runner
+    androidTestImplementation("androidx.test:runner:1.4.0")
+    androidTestImplementation("com.google.firebase:firebase-auth:22.2.0")
+
+
 }
