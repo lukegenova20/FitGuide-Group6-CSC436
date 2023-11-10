@@ -24,21 +24,24 @@ public class WorkoutListActivity extends AppCompatActivity {
         // Create a list of dummy workouts
         String[] workouts = new String[]{
                 "Bench Press",
+                "Deadlift",
                 "Workout 2",
                 "Workout 3",
                 // ... Add as many as you need
         };
-
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, workouts);
         workoutListView.setAdapter(adapter);
 
         workoutListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                if (position == 0) { // Assuming "Workout 1" is at position 0
-                    Intent intent = new Intent(WorkoutListActivity.this, WorkoutDetailActivity.class);
-                    startActivity(intent);
+                Intent intent = new Intent(WorkoutListActivity.this, WorkoutDetailActivity.class);
+                if (position == 1) {
+                    intent.putExtra("workout", "Deadlift");
+                } else if (position == 0) {
+                    intent.putExtra("workout", "Bench Press");
                 }
+                startActivity(intent);
             }
         });
     }
