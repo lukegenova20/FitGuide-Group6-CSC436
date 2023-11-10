@@ -4,12 +4,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fitguide.Workout_Creation.Workout_Creation;
 import com.example.fitguide.Workout_Creation.Workout_Selection;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -20,6 +23,26 @@ public class MainActivity2 extends AppCompatActivity {
     TextView username ;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
+    private void showPopup(View v){
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Let workout creator know what kind of workout style the user wants for their routine.
+                if (item.getItemId() == R.id.sign_out){
+                    Intent switchIntent = new Intent(MainActivity2.this, MainActivityLogin.class);
+                    switchIntent.putExtra("workout_style", item.getTitle());
+                    firebaseAuth.signOut();
+                    startActivity(switchIntent);
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+        popup.inflate(R.menu.user_acc_drop_down);
+        popup.show();
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +102,7 @@ public class MainActivity2 extends AppCompatActivity {
             public void onClick(View v) {
                 // TODO: Load pop-up menu
                 // Disable menu selection for workout routine creation.
-                Toast.makeText(getApplicationContext(), "NEED TO WORK ON THIS", Toast.LENGTH_SHORT).show();
+                showPopup(v);
             }
         });
 
