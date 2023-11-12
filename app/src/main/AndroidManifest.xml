@@ -13,6 +13,9 @@
         android:theme="@style/Theme.FitGuide"
         tools:targetApi="31">
         <activity
+            android:name=".Settings_Page"
+            android:exported="false" />
+        <activity
             android:name=".Workout_Creation.ExerciseListCreation"
             android:exported="false" />
         <activity

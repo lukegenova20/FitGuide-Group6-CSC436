@@ -86,8 +86,7 @@ public class MainActivity2 extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load Settings page
-                Intent switchIntent = new Intent(v.getContext(), DummyPage.class);
+                Intent switchIntent = new Intent(v.getContext(), Settings_Page.class);
                 startActivity(switchIntent);
             }
         });

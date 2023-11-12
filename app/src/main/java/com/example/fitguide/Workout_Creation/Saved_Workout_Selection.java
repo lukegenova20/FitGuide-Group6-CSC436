@@ -20,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.fitguide.DummyPage;
 import com.example.fitguide.R;
+import com.example.fitguide.Settings_Page;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
 import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -259,8 +260,7 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load Settings page
-                Intent switchIntent = new Intent(v.getContext(), DummyPage.class);
+                Intent switchIntent = new Intent(v.getContext(), Settings_Page.class);
                 startActivity(switchIntent);
             }
         });
