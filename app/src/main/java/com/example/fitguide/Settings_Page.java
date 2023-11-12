@@ -102,6 +102,9 @@ public class Settings_Page extends AppCompatActivity {
         text.setHint("Enter Time");
         text.setGravity(Gravity.CENTER_HORIZONTAL);
 
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
+        text.setTypeface(font);
+
         mainLayout.addView(text);
 
         Button button = new Button(getApplicationContext());
@@ -112,7 +115,6 @@ public class Settings_Page extends AppCompatActivity {
         button.setTextSize(20);
         button.setBackgroundTintMode(null);
 
-        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
         button.setTypeface(font);
 
         button.setOnClickListener(new View.OnClickListener() {
