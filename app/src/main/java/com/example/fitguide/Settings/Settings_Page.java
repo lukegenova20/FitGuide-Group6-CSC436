@@ -86,7 +86,7 @@ public class Settings_Page extends AppCompatActivity {
         text.setLayoutParams(params);
 
         text.setText(R.string.Notification_Time);
-        text.setTextSize(40);
+        text.setTextSize(30);
         text.setTextColor(getResources().getColor(R.color.black, getTheme()));
 
         Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
@@ -116,8 +116,10 @@ public class Settings_Page extends AppCompatActivity {
         text.setHint("Enter Time");
         text.setGravity(Gravity.CENTER_HORIZONTAL);
 
-        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
-        text.setTypeface(font);
+        text.setClickable(false);
+        text.setFocusable(false);
+        text.setEnabled(false);
+
 
         // Show recent changes in edit text view
         if (madeChanges){
@@ -130,10 +132,11 @@ public class Settings_Page extends AppCompatActivity {
         button.setLayoutParams(params);
 
         button.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.button_background));
-        button.setText("Get Date");
+        button.setText("Set Time");
         button.setTextSize(20);
         button.setBackgroundTintMode(null);
 
+        Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
         button.setTypeface(font);
 
         button.setOnClickListener(new View.OnClickListener() {
@@ -147,7 +150,11 @@ public class Settings_Page extends AppCompatActivity {
                             public void onTimeSet(TimePicker tp, int sHour, int sMinute) {
                                 setHour = sHour;
                                 setMinute = sMinute;
-                                text.setText(sHour + ":" + sMinute);
+                                if (sMinute < 10){
+                                    text.setText(sHour + ":0" + sMinute);
+                                } else {
+                                    text.setText(sHour + ":" + sMinute);
+                                }
                             }
                         }, 12, 0, true);
                 picker.show();
@@ -257,7 +264,7 @@ public class Settings_Page extends AppCompatActivity {
     private void addHeaderListeners(){
 
         ImageButton drop = findViewById(R.id.Dropdown);
-        ImageButton home = findViewById(R.id.Settings);
+        ImageButton home = findViewById(R.id.Home);
 
         drop.setOnClickListener(new View.OnClickListener() {
             @Override

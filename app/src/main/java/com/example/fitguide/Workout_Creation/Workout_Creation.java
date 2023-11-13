@@ -281,6 +281,18 @@ public class Workout_Creation extends AppCompatActivity {
                                     // Add the routine to the list.
                                     routineList.addWorkoutRoutine(currentRoutine);
 
+                                    // If the routine has been selected, set is as the selected exerice.
+                                    if (currentRoutine.isSelected()){
+                                        WorkoutRoutine selected = routineList.getSelected();
+                                        if (selected == null){
+                                            routineList.setSelected(currentRoutine);
+                                        } else {
+                                            routineList.removeWorkoutRoutine(selected);
+                                            selected.setSelected(false);
+                                            routineList.addWorkoutRoutine(selected);
+                                        }
+                                    }
+
                                     // Update the document.
                                     doc.set(routineList).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
