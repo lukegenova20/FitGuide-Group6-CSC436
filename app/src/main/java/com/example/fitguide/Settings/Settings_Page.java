@@ -1,9 +1,12 @@
-package com.example.fitguide;
+package com.example.fitguide.Settings;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
@@ -20,9 +23,15 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.fitguide.MainActivity2;
+import com.example.fitguide.R;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+
+import java.util.Calendar;
 
 
 public class Settings_Page extends AppCompatActivity {
@@ -32,7 +41,11 @@ public class Settings_Page extends AppCompatActivity {
 
     LinearLayout mainLayout;
 
+    // Did the user change their settings?
     boolean saveChanges;
+
+    // Used to load recent activity.
+    boolean savedNotifications;
 
     int setHour;
     int setMinute;
@@ -46,6 +59,7 @@ public class Settings_Page extends AppCompatActivity {
         firebaseFirestore  = FirebaseFirestore.getInstance();
         mainLayout = findViewById(R.id.notifications_time);
         saveChanges = false;
+        savedNotifications = false;
 
         addCheckBoxEvent();
 
@@ -83,7 +97,7 @@ public class Settings_Page extends AppCompatActivity {
     /*
      * This function displays the edit text and button to get a time programmatically.
      */
-    private void createTimeChange(){
+    private void createTimeChange(boolean madeChanges){
         EditText text = new EditText(getApplicationContext());
 
         LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
@@ -104,6 +118,11 @@ public class Settings_Page extends AppCompatActivity {
 
         Typeface font = Typeface.createFromAsset(getAssets(), "font/jockey_one.ttf");
         text.setTypeface(font);
+
+        // Show recent changes in edit text view
+        if (madeChanges){
+            text.setText(setHour + ":" + setMinute);
+        }
 
         mainLayout.addView(text);
 
@@ -130,7 +149,7 @@ public class Settings_Page extends AppCompatActivity {
                                 setMinute = sMinute;
                                 text.setText(sHour + ":" + sMinute);
                             }
-                        }, 12, 12, true);
+                        }, 12, 0, true);
                 picker.show();
             }
         });
@@ -144,18 +163,65 @@ public class Settings_Page extends AppCompatActivity {
     private void addCheckBoxEvent(){
         CheckBox checkBox = findViewById(R.id.checkBox_settings);
 
+        // Set changes user already made.
+        DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Personal_info");
+        doc.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                boolean notifications = documentSnapshot.getBoolean("Notifications On");
+                if (notifications){
+                    saveChanges = true;
+                    savedNotifications = true;
+                    setHour = (Integer) documentSnapshot.get("Hour Set");
+                    setMinute = (Integer) documentSnapshot.get("Minute Set");
+                    checkBox.setChecked(true);
+                }
+            }
+        });
+
         checkBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 saveChanges = isChecked;
                 if (saveChanges) {
                     createText();
-                    createTimeChange();
+                    createTimeChange(savedNotifications);
                 } else {
-                    mainLayout.removeAllViews();;
+                    mainLayout.removeAllViews();
                 }
             }
         });
+    }
+
+    /*
+     * This function creates a alarm system that creates a notification when
+     * the it reaches the time the user sets
+     */
+    private void setAlarmSystem(){
+
+        // Connect Broadcast Receiver to a pending intent object.
+        Intent alarmIntent = new Intent(this, AlarmReceiver.class);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(this, 0, alarmIntent,PendingIntent.FLAG_IMMUTABLE);
+
+        AlarmManager manager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        if (saveChanges){
+            // Set time to create alarm.
+            Calendar calender = Calendar.getInstance();
+            calender.setTimeInMillis(System.currentTimeMillis());
+            calender.set(Calendar.HOUR_OF_DAY, setHour);
+            calender.set(Calendar.MINUTE, setMinute);
+            calender.set(Calendar.SECOND, 0);
+
+            // Set Alarm to go off at the set time everyday.
+            manager.setRepeating(AlarmManager.RTC_WAKEUP, calender.getTimeInMillis(),
+                    AlarmManager.INTERVAL_DAY, pendingIntent);
+        } else {
+
+            // Cancels the alarm
+            manager.cancel(pendingIntent);
+        }
+
     }
 
     /*
@@ -167,14 +233,17 @@ public class Settings_Page extends AppCompatActivity {
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Personal_info");
                 if (saveChanges){
-                    DocumentReference doc = firebaseFirestore.collection(firebaseAuth.getCurrentUser().getUid()).document("Personal_info");
                     doc.update("Notifications On", true);
                     doc.update("Hour Set", setHour);
                     doc.update("Minute Set", setMinute);
-
-                    // TODO: Create notification system
+                } else {
+                    doc.update("Notifications On", false);
+                    doc.update("Hour Set", 0);
+                    doc.update("Minute Set", 0);
                 }
+                setAlarmSystem();
                 Intent switchIntent = new Intent(v.getContext(), MainActivity2.class);
                 startActivity(switchIntent);
 
@@ -194,7 +263,6 @@ public class Settings_Page extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // TODO: Load pop-up menu
-                // Disable menu selection for workout routine creation.
                 Toast.makeText(getApplicationContext(), "NEED TO WORK ON THIS", Toast.LENGTH_SHORT).show();
             }
         });

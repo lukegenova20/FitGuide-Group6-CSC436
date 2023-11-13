@@ -18,9 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.fitguide.DummyPage;
 import com.example.fitguide.R;
-import com.example.fitguide.Settings_Page;
+import com.example.fitguide.Settings.Settings_Page;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
 import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -28,10 +27,6 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 public class Saved_Workout_Selection extends AppCompatActivity {
 
