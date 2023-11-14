@@ -31,7 +31,6 @@ public class MainActivity2 extends AppCompatActivity {
                 // Let workout creator know what kind of workout style the user wants for their routine.
                 if (item.getItemId() == R.id.sign_out){
                     Intent switchIntent = new Intent(MainActivity2.this, MainActivityLogin.class);
-                    switchIntent.putExtra("workout_style", item.getTitle());
                     firebaseAuth.signOut();
                     startActivity(switchIntent);
                     finish();
@@ -100,8 +99,6 @@ public class MainActivity2 extends AppCompatActivity {
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load pop-up menu
-                // Disable menu selection for workout routine creation.
                 showPopup(v);
             }
         });

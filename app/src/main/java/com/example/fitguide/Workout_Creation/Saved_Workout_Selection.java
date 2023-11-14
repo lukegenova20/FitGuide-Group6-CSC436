@@ -160,7 +160,7 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         text.setPadding(padding, 0, 0,0);
 
         String selected = "No";
-        if (routine.isSelected()){
+        if (routine.getSelected()){
             selected = "Yes";
         }
         text.setText("Style: " + routine.getStyle() + "\nSelected: " + selected);

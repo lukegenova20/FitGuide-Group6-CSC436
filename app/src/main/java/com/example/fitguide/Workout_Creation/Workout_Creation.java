@@ -151,11 +151,16 @@ public class Workout_Creation extends AppCompatActivity {
                     // Remove the old routine from the list if its in the list.
                     routineList.removeWorkoutRoutine(currentRoutine);
 
+                    // If the routine is the selected routine, unselect it.
+                    if (currentRoutine.getSelected()){
+                        routineList.setSelected(null);
+                    }
+
                     doc.set(routineList);
                 }
             });
 
-            // Save progress made in the exerice list creation page.
+            // Save progress made in the exercise list creation page.
             ExerciseList list = (ExerciseList) getIntent().getSerializableExtra("exerciseList");
             if (list != null){
                 String day = getIntent().getStringExtra("exerciseListDay");
@@ -282,7 +287,7 @@ public class Workout_Creation extends AppCompatActivity {
                                     routineList.addWorkoutRoutine(currentRoutine);
 
                                     // If the routine has been selected, set is as the selected exerice.
-                                    if (currentRoutine.isSelected()){
+                                    if (currentRoutine.getSelected()){
                                         WorkoutRoutine selected = routineList.getSelected();
                                         if (selected == null){
                                             routineList.setSelected(currentRoutine);

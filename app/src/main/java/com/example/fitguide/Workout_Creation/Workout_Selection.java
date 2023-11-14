@@ -13,6 +13,7 @@ import android.widget.PopupMenu;
 import android.widget.Toast;
 
 import com.example.fitguide.MainActivity2;
+import com.example.fitguide.MainActivityLogin;
 import com.example.fitguide.R;
 import com.example.fitguide.Settings.Settings_Page;
 import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
@@ -48,7 +49,7 @@ public class Workout_Selection extends AppCompatActivity {
      * Add the event handler for the back button.
      */
     private void backButton(){
-        Button back = findViewById(R.id.back_button);
+        Button back = findViewById(R.id.back_button_selection);
 
         // Go back to the home page.
         back.setOnClickListener(new View.OnClickListener() {
@@ -74,9 +75,7 @@ public class Workout_Selection extends AppCompatActivity {
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load pop-up menu
-                // Disable menu selection for workout routine creation.
-                Toast.makeText(getApplicationContext(), "NEED TO WORK ON THIS", Toast.LENGTH_SHORT).show();
+                showSignOutPopup(v);
             }
         });
 
@@ -131,6 +130,29 @@ public class Workout_Selection extends AppCompatActivity {
             }
         });
 
+    }
+
+    /*
+     * Displays a drop down menu that allows the user to signout
+     */
+    private void showSignOutPopup(View v){
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Let workout creator know what kind of workout style the user wants for their routine.
+                if (item.getItemId() == R.id.sign_out){
+                    Intent switchIntent = new Intent(Workout_Selection.this, MainActivityLogin.class);
+                    firebaseAuth.signOut();
+                    startActivity(switchIntent);
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+        popup.inflate(R.menu.user_acc_drop_down);
+        popup.show();
     }
 
     /*

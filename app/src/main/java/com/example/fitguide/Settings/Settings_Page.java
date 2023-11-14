@@ -11,6 +11,7 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
@@ -19,11 +20,13 @@ import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.fitguide.MainActivity2;
+import com.example.fitguide.MainActivityLogin;
 import com.example.fitguide.R;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -269,8 +272,7 @@ public class Settings_Page extends AppCompatActivity {
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load pop-up menu
-                Toast.makeText(getApplicationContext(), "NEED TO WORK ON THIS", Toast.LENGTH_SHORT).show();
+                showPopup(v);
             }
         });
 
@@ -281,5 +283,25 @@ public class Settings_Page extends AppCompatActivity {
                 startActivity(switchIntent);
             }
         });
+    }
+
+    private void showPopup(View v){
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Let workout creator know what kind of workout style the user wants for their routine.
+                if (item.getItemId() == R.id.sign_out){
+                    Intent switchIntent = new Intent(Settings_Page.this, MainActivityLogin.class);
+                    firebaseAuth.signOut();
+                    startActivity(switchIntent);
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+        popup.inflate(R.menu.user_acc_drop_down);
+        popup.show();
     }
 }
