@@ -12,6 +12,7 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.fitguide.MainActivity2;
 import com.example.fitguide.R;
 import com.example.fitguide.Settings.Settings_Page;
 import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
@@ -26,6 +27,7 @@ public class Workout_Selection extends AppCompatActivity {
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,6 +39,26 @@ public class Workout_Selection extends AppCompatActivity {
         addMainButtonListeners();
 
         addHeaderListeners();
+
+        backButton();
+
+    }
+
+    /*
+     * Add the event handler for the back button.
+     */
+    private void backButton(){
+        Button back = findViewById(R.id.back_button);
+
+        // Go back to the home page.
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchIntent = new Intent(v.getContext(), MainActivity2.class);
+                startActivity(switchIntent);
+                finish();
+            }
+        });
 
     }
 
