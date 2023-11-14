@@ -15,9 +15,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import static androidx.test.espresso.intent.Intents.intended;
 import static androidx.test.espresso.intent.matcher.IntentMatchers.hasComponent;
-
-import com.example.fitguide.Workout_Classes.WorkoutRoutine;
-import com.example.fitguide.Workout_Creation.Workout_Creation;
 import com.example.fitguide.Workout_Creation.Workout_Selection;
 import com.google.firebase.auth.FirebaseAuth;
 

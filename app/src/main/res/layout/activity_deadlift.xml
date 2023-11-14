@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/workout_deadlift"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D9D9D9">
+
+    <!-- Exercise Title -->
+    <TextView
+        android:id="@+id/exerciseTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Deadlift"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Exercise Image -->
+    <ImageView
+        android:id="@+id/exerciseImage"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/deadlift"
+        app:layout_constraintDimensionRatio="H,16:9"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseTitle" />
+
+    <!-- Difficulty Label -->
+    <TextView
+        android:id="@+id/difficultyLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Difficulty:"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/exerciseImage" />
+
+    <!-- Difficulty Value -->
+    <TextView
+        android:id="@+id/difficultyValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hard"
+    android:textAlignment="center"
+    app:layout_constraintTop_toBottomOf="@+id/difficultyLabel"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/equipmentLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Exercise Equipment:"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/difficultyValue" />
+
+    <!-- Exercise Equipment Value -->
+    <TextView
+        android:id="@+id/equipmentValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Barbell, Weights"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/equipmentLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/bodyCoverageLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Primary Body Coverage:"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/equipmentValue" />
+
+    <!-- Primary Body Coverage Value -->
+    <TextView
+        android:id="@+id/bodyCoverageValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back: Erector Spinae\nLegs: Hamstrings, Quadriceps, Glutes\nLower Back: Trapezius"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/bodyCoverageLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/howToLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="How to Complete Exercise:"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bodyCoverageValue" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@+id/howToLabel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/exerciseImage"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/howToInstructions"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1. Stand with your feet hip-width apart, toes pointing forward.\n2. Bend at your hips and knees to lower your body and grip the barbell with an overhand grip, hands shoulder-width apart.\n3. Keep your back flat, chest up, and shoulders back.\n4. Lift the barbell by extending your hips and knees, keeping it close to your body.\n5. Stand tall with the barbell in your hands, then lower it back to the ground.\n6. Repeat for the desired number of repetitions."
+            android:textAlignment="center"
+            android:paddingStart="20dp"/>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
