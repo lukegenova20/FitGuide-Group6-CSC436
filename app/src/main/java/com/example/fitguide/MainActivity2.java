@@ -12,7 +12,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.fitguide.Workout_Creation.Workout_Creation;
+import com.example.fitguide.Settings.Settings_Page;
 import com.example.fitguide.Workout_Creation.Workout_Selection;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -109,8 +109,7 @@ public class MainActivity2 extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load Settings page
-                Intent switchIntent = new Intent(v.getContext(), DummyPage.class);
+                Intent switchIntent = new Intent(v.getContext(), Settings_Page.class);
                 startActivity(switchIntent);
             }
         });

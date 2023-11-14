@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Workout_Creation.Workout_Selection"
-    tools:layout_editor_absoluteX="1dp"
-    tools:layout_editor_absoluteY="1dp">
+    tools:context=".Settings.Settings_Page">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/header"
@@ -33,24 +28,24 @@
             android:scaleType="fitCenter"
             android:src="@drawable/menu"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/Settings"
+            app:layout_constraintEnd_toStartOf="@+id/Home"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:tint="@color/icon_color" />
 
         <ImageButton
-            android:id="@+id/Settings"
+            android:id="@+id/Home"
             android:layout_width="80dp"
             android:layout_height="48dp"
             android:layout_marginStart="80dp"
             android:adjustViewBounds="true"
             android:background="@drawable/button_background"
-            android:contentDescription="@string/Settings"
+            android:contentDescription="@string/Home"
             android:paddingTop="2dp"
             android:paddingEnd="3dp"
             android:paddingBottom="4dp"
             android:scaleType="fitCenter"
-            android:src="@drawable/settings_gear"
+            android:src="@drawable/home"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/Dropdown"
@@ -58,52 +53,59 @@
             app:tint="@color/icon_color" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <Button
-        android:id="@+id/back_button_selection"
-        android:layout_width="129dp"
+    <TextView
+        android:id="@+id/Settings_title"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="30dp"
-        android:layout_gravity="start"
-        android:background="@drawable/button_background"
-        android:drawableLeft="@drawable/arrow_back"
         android:fontFamily="@font/jockey_one"
-        android:text="Back"
+        android:text="@string/Settings_Page"
         android:textColor="@color/black"
-        android:textSize="23sp"
-        app:backgroundTint="@null"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/header" />
+        app:layout_constraintTop_toBottomOf="@id/header" />
+
+    <CheckBox
+        android:id="@+id/checkBox_settings"
+        android:layout_width="205dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="Turn On Notifications"
+        android:background="@drawable/button_background"
+        android:fontFamily="@font/jockey_one"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Settings_title"/>
+
+    <LinearLayout
+        android:id="@+id/notifications_time"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/checkBox_settings" >
+
+    </LinearLayout>
 
     <Button
-        android:id="@+id/new_workout"
+        android:id="@+id/save_changes"
         android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="110dp"
+        android:layout_height="55dp"
+        android:layout_marginTop="30dp"
         android:background="@drawable/button_background"
         android:fontFamily="@font/jockey_one"
-        android:text="@string/new_workout"
+        android:text="@string/Save_Settings"
         android:textColor="@color/black"
         android:textSize="23sp"
         app:backgroundTint="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/back_button_selection"/>
+        app:layout_constraintTop_toBottomOf="@+id/notifications_time" />
 
-    <Button
-        android:id="@+id/load_workout"
-        android:layout_width="wrap_content"
-        android:layout_height="60dp"
-        android:layout_marginTop="100dp"
-        android:text="@string/load_workout"
-        android:textColor="@color/black"
-        android:fontFamily="@font/jockey_one"
-        android:textSize="23sp"
-        android:background="@drawable/button_background"
-        app:backgroundTint="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/new_workout" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
-
-

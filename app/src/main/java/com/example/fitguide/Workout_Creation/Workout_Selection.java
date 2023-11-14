@@ -12,9 +12,9 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.fitguide.DummyPage;
+import com.example.fitguide.MainActivity2;
 import com.example.fitguide.R;
-import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.example.fitguide.Settings.Settings_Page;
 import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,12 +22,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.List;
-
 public class Workout_Selection extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +39,26 @@ public class Workout_Selection extends AppCompatActivity {
         addMainButtonListeners();
 
         addHeaderListeners();
+
+        backButton();
+
+    }
+
+    /*
+     * Add the event handler for the back button.
+     */
+    private void backButton(){
+        Button back = findViewById(R.id.back_button);
+
+        // Go back to the home page.
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchIntent = new Intent(v.getContext(), MainActivity2.class);
+                startActivity(switchIntent);
+                finish();
+            }
+        });
 
     }
 
@@ -64,8 +83,7 @@ public class Workout_Selection extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load Settings page
-                Intent switchIntent = new Intent(v.getContext(), DummyPage.class);
+                Intent switchIntent = new Intent(v.getContext(), Settings_Page.class);
                 startActivity(switchIntent);
             }
         });

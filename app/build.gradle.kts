@@ -84,6 +84,6 @@ dependencies {
     // JUnit4 runner
     androidTestImplementation("androidx.test:runner:1.4.0")
     androidTestImplementation("com.google.firebase:firebase-auth:22.2.0")
-
+    //implementation("androidx.core:core-ktx:2.2.0")
 
 }
