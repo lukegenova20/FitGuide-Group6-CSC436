@@ -103,6 +103,9 @@ public class MainActivityCreateAccount extends AppCompatActivity {
                                                 datas.put("First Name",f_name.getText().toString());
                                                 datas.put("Last Name",l_name.getText().toString());
                                                 datas.put("Weight(LBS)",weight.getText().toString());
+                                                datas.put("Notifications On", false);
+                                                datas.put("Hour Set", 0);
+                                                datas.put("Minute Set", 0);
                                                 firebaseFirestore.collection(authResult.getUser().getUid()).
                                                         document("Personal_info").set(datas).addOnSuccessListener(new OnSuccessListener<Void>() {
                                                             @Override

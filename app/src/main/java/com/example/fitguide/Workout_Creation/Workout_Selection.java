@@ -12,9 +12,10 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
-import com.example.fitguide.DummyPage;
+import com.example.fitguide.MainActivity2;
+import com.example.fitguide.MainActivityLogin;
 import com.example.fitguide.R;
-import com.example.fitguide.Workout_Classes.WorkoutRoutine;
+import com.example.fitguide.Settings.Settings_Page;
 import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,12 +23,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.util.List;
-
 public class Workout_Selection extends AppCompatActivity {
 
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +40,26 @@ public class Workout_Selection extends AppCompatActivity {
         addMainButtonListeners();
 
         addHeaderListeners();
+
+        backButton();
+
+    }
+
+    /*
+     * Add the event handler for the back button.
+     */
+    private void backButton(){
+        Button back = findViewById(R.id.back_button_selection);
+
+        // Go back to the home page.
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent switchIntent = new Intent(v.getContext(), MainActivity2.class);
+                startActivity(switchIntent);
+                finish();
+            }
+        });
 
     }
 
@@ -55,17 +75,14 @@ public class Workout_Selection extends AppCompatActivity {
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load pop-up menu
-                // Disable menu selection for workout routine creation.
-                Toast.makeText(getApplicationContext(), "NEED TO WORK ON THIS", Toast.LENGTH_SHORT).show();
+                showSignOutPopup(v);
             }
         });
 
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load Settings page
-                Intent switchIntent = new Intent(v.getContext(), DummyPage.class);
+                Intent switchIntent = new Intent(v.getContext(), Settings_Page.class);
                 startActivity(switchIntent);
             }
         });
@@ -113,6 +130,29 @@ public class Workout_Selection extends AppCompatActivity {
             }
         });
 
+    }
+
+    /*
+     * Displays a drop down menu that allows the user to signout
+     */
+    private void showSignOutPopup(View v){
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Let workout creator know what kind of workout style the user wants for their routine.
+                if (item.getItemId() == R.id.sign_out){
+                    Intent switchIntent = new Intent(Workout_Selection.this, MainActivityLogin.class);
+                    firebaseAuth.signOut();
+                    startActivity(switchIntent);
+                    finish();
+                    return true;
+                }
+                return false;
+            }
+        });
+        popup.inflate(R.menu.user_acc_drop_down);
+        popup.show();
     }
 
     /*

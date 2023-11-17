@@ -152,7 +152,7 @@ public class WorkoutRoutine implements Serializable {
     /*
      * Determines if the user is using this workout routine.
      */
-    public boolean isSelected(){
+    public boolean getSelected(){
         return selected;
     }
 }

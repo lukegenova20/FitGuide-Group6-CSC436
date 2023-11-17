@@ -12,7 +12,7 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.fitguide.Workout_Creation.Workout_Creation;
+import com.example.fitguide.Settings.Settings_Page;
 import com.example.fitguide.Workout_Creation.Workout_Selection;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -31,7 +31,6 @@ public class MainActivity2 extends AppCompatActivity {
                 // Let workout creator know what kind of workout style the user wants for their routine.
                 if (item.getItemId() == R.id.sign_out){
                     Intent switchIntent = new Intent(MainActivity2.this, MainActivityLogin.class);
-                    switchIntent.putExtra("workout_style", item.getTitle());
                     firebaseAuth.signOut();
                     startActivity(switchIntent);
                     finish();
@@ -100,8 +99,6 @@ public class MainActivity2 extends AppCompatActivity {
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load pop-up menu
-                // Disable menu selection for workout routine creation.
                 showPopup(v);
             }
         });
@@ -109,8 +106,7 @@ public class MainActivity2 extends AppCompatActivity {
         settings.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load Settings page
-                Intent switchIntent = new Intent(v.getContext(), DummyPage.class);
+                Intent switchIntent = new Intent(v.getContext(), Settings_Page.class);
                 startActivity(switchIntent);
             }
         });

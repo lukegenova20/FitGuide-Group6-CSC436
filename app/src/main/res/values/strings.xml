@@ -2,6 +2,11 @@
     <string name="app_name">FitGuide</string>
     <string name="action_settings">Settings</string>
 
+    <!-- Strings for the Settings page -->
+    <string name="Settings_Page">Settings</string>
+    <string name="Save_Settings">Save Changes</string>
+    <string name="Notification_Time">Set Time for Notification to Go Off</string>
+
     <!-- Strings for exercise list creation page -->
     <string name="Exercise_List">Exercise List for </string>
     <string name="Exercise_Group">Exercises Under </string>
@@ -12,6 +17,7 @@
     <!-- Strings for header -->
     <string name="DropDown">Dropdown</string>
     <string name="Settings">Settings</string>
+    <string name="Home">Home</string>
 
     <!-- Strings used for buttons -->
     <string name="new_workout">Create New Workout Routine</string>
