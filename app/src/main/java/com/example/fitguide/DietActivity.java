@@ -22,11 +22,28 @@ public class DietActivity extends AppCompatActivity {
         setContentView(R.layout.activity_meals);
 
         Button designDiet = findViewById(R.id.new_diet);
-
+        Button loadDiet = findViewById(R.id.load_diet);
+        Button backButton = findViewById(R.id.back_button);
         designDiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), NewDietActivity.class);
+                startActivity(intent);
+            }
+        });
+
+        loadDiet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), Diet_Creation.class);
+                startActivity(intent);
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
                 startActivity(intent);
             }
         });

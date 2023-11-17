@@ -72,7 +72,18 @@
         app:layout_constraintTop_toBottomOf="@+id/header" />
 
     <Button
-        android:id="@+id/load_workout"
+        android:id="@+id/back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Back"
+        app:layout_constraintTop_toBottomOf="@+id/load_diet"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="16dp" />
+
+    <Button
+        android:id="@+id/load_diet"
         android:layout_width="wrap_content"
         android:layout_height="60dp"
         android:layout_marginTop="100dp"
@@ -85,4 +96,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/new_diet" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

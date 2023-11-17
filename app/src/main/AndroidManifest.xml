@@ -62,6 +62,8 @@
         <activity android:name=".DietTuna" />
         <activity android:name=".DietQuinoa" />
         <activity android:name=".NewDietActivity" />
+
+        <activity android:name=".Diet_Creation" />
     </application>
 
 </manifest>

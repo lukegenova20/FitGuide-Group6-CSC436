@@ -1,0 +1,471 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_diet_creation_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="Diet_Creation">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="83dp"
+        android:background="@color/header_color"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/Dropdown"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginEnd="80dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/button_background"
+            android:contentDescription="@string/DropDown"
+            android:paddingEnd="3dp"
+            android:paddingBottom="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/menu"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/Settings"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/icon_color" />
+
+        <ImageButton
+            android:id="@+id/Settings"
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="80dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/button_background"
+            android:contentDescription="@string/Settings"
+            android:paddingTop="2dp"
+            android:paddingEnd="3dp"
+            android:paddingBottom="4dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/settings_gear"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/Dropdown"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/icon_color" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:background="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <FrameLayout
+                android:id="@+id/sunday_layout"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="50dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workout_creation_title">
+
+                <Button
+                    android:id="@+id/sunday_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/jockey_one"
+                    android:text="No_Text"
+                    android:textColor="@color/black"
+                    android:textSize="0sp"
+                    app:backgroundTint="@null"/>
+
+                <TextView
+                    android:id="@+id/sunday_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/jockey_one"
+                    android:gravity="center"
+                    android:text="@string/sunday"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <View
+                    android:layout_width="245dp"
+                    android:layout_height="4dp"
+                    android:background="@color/border_color"
+                    android:layout_marginTop="40dp"/>
+
+                <TextView
+                    android:id="@+id/sunday_workout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/jockey_one"
+                    android:hint="Diet Type"
+                    android:textColor="@color/black"
+                    android:textSize="40sp"/>
+
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/workout_creation_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="Diet Calendar"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <FrameLayout
+                android:id="@+id/monday_layout"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/sunday_layout">
+
+                <Button
+                    android:id="@+id/monday_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/jockey_one"
+                    android:text="No_Text"
+                    android:textColor="@color/black"
+                    android:textSize="0sp"
+                    app:backgroundTint="@null"/>
+
+                <TextView
+                    android:id="@+id/monday_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/jockey_one"
+                    android:gravity="center"
+                    android:text="@string/monday"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <View
+                    android:layout_width="245dp"
+                    android:layout_height="4dp"
+                    android:background="@color/border_color"
+                    android:layout_marginTop="40dp"/>
+
+                <TextView
+                    android:id="@+id/monday_workout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/jockey_one"
+                    android:hint="Diet Type"
+                    android:textColor="@color/black"
+                    android:textSize="40sp"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/tuesday_layout"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/monday_layout">
+
+                <Button
+                    android:id="@+id/tuesday_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/jockey_one"
+                    android:text="No_Text"
+                    android:textColor="@color/black"
+                    android:textSize="0sp"
+                    app:backgroundTint="@null"/>
+
+                <TextView
+                    android:id="@+id/tuesday_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/jockey_one"
+                    android:gravity="center"
+                    android:text="@string/tuesday"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <View
+                    android:layout_width="245dp"
+                    android:layout_height="4dp"
+                    android:background="@color/border_color"
+                    android:layout_marginTop="40dp"/>
+
+                <TextView
+                    android:id="@+id/tuesday_workout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/jockey_one"
+                    android:hint="Diet Type"
+                    android:textColor="@color/black"
+                    android:textSize="40sp"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/wednesday_layout"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tuesday_layout">
+
+                <Button
+                    android:id="@+id/wednesday_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/jockey_one"
+                    android:text="No_Text"
+                    android:textColor="@color/black"
+                    android:textSize="0sp"
+                    app:backgroundTint="@null"/>
+
+                <TextView
+                    android:id="@+id/wednesday_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/jockey_one"
+                    android:gravity="center"
+                    android:text="@string/wednesday"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <View
+                    android:layout_width="245dp"
+                    android:layout_height="4dp"
+                    android:background="@color/border_color"
+                    android:layout_marginTop="40dp"/>
+
+                <TextView
+                    android:id="@+id/wednesday_workout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/jockey_one"
+                    android:hint="Diet Type"
+                    android:textColor="@color/black"
+                    android:textSize="40sp"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/thursday_layout"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/wednesday_layout">
+
+                <Button
+                    android:id="@+id/thursday_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/jockey_one"
+                    android:text="No_Text"
+                    android:textColor="@color/black"
+                    android:textSize="0sp"
+                    app:backgroundTint="@null"/>
+
+                <TextView
+                    android:id="@+id/thursday_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/jockey_one"
+                    android:gravity="center"
+                    android:text="@string/thursday"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <View
+                    android:layout_width="245dp"
+                    android:layout_height="4dp"
+                    android:background="@color/border_color"
+                    android:layout_marginTop="40dp"/>
+
+                <TextView
+                    android:id="@+id/thursday_workout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/jockey_one"
+                    android:hint="Diet Type"
+                    android:textColor="@color/black"
+                    android:textSize="40sp"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/friday_layout"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/thursday_layout">
+
+                <Button
+                    android:id="@+id/friday_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/jockey_one"
+                    android:text="No_Text"
+                    android:textColor="@color/black"
+                    android:textSize="0sp"
+                    app:backgroundTint="@null"/>
+
+                <TextView
+                    android:id="@+id/friday_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/jockey_one"
+                    android:gravity="center"
+                    android:text="@string/friday"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <View
+                    android:layout_width="245dp"
+                    android:layout_height="4dp"
+                    android:background="@color/border_color"
+                    android:layout_marginTop="40dp"/>
+
+                <TextView
+                    android:id="@+id/friday_workout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/jockey_one"
+                    android:hint="Diet Type"
+                    android:textColor="@color/black"
+                    android:textSize="40sp"/>
+
+            </FrameLayout>
+
+            <FrameLayout
+                android:id="@+id/saturday_layout"
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="80dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.503"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/friday_layout">
+
+                <Button
+                    android:id="@+id/saturday_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/button_background"
+                    android:fontFamily="@font/jockey_one"
+                    android:text="No_Text"
+                    android:textColor="@color/black"
+                    android:textSize="0sp"
+                    app:backgroundTint="@null"/>
+
+                <TextView
+                    android:id="@+id/saturday_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/jockey_one"
+                    android:gravity="center"
+                    android:text="@string/saturday"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <View
+                    android:layout_width="245dp"
+                    android:layout_height="4dp"
+                    android:background="@color/border_color"
+                    android:layout_marginTop="40dp"/>
+
+                <TextView
+                    android:id="@+id/saturday_workout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:gravity="center"
+                    android:fontFamily="@font/jockey_one"
+                    android:hint="Diet Type"
+                    android:textColor="@color/black"
+                    android:textSize="40sp"/>
+
+            </FrameLayout>
+
+            <CheckBox
+                android:id="@+id/checkBox"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Set as Main Workout"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/jockey_one"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/saturday_layout"/>
+
+            <Button
+                android:id="@+id/save_workout"
+                android:layout_width="wrap_content"
+                android:layout_height="60dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginBottom="50dp"
+                android:background="@drawable/button_background"
+                android:fontFamily="@font/jockey_one"
+                android:text="@string/save"
+                android:textColor="@color/black"
+                android:textSize="23sp"
+                app:backgroundTint="@null"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
