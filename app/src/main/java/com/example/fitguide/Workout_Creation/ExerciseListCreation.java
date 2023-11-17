@@ -21,6 +21,7 @@ import android.widget.Toast;
 
 import com.example.fitguide.DummyPage;
 import com.example.fitguide.R;
+import com.example.fitguide.WorkoutDetailActivity;
 import com.example.fitguide.Workout_Classes.Exercise;
 import com.example.fitguide.Workout_Classes.ExerciseList;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
@@ -326,8 +327,8 @@ public class ExerciseListCreation extends AppCompatActivity {
         newButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO Link to exercise encyclopedia
-                Intent switchIntent = new Intent(v.getContext(), DummyPage.class);
+                Intent switchIntent = new Intent(v.getContext(), WorkoutDetailActivity.class);
+                switchIntent.putExtra("workout", exercise.getName());
                 startActivity(switchIntent);
             }
         });

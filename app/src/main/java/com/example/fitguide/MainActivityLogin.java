@@ -121,12 +121,11 @@ public class MainActivityLogin extends AppCompatActivity {
     private void createExerciseDatabase(){
         FirebaseFirestore firebaseFirestore = FirebaseFirestore.getInstance();
 
-        DocumentReference docs = firebaseFirestore.collection("Exercises").document("Pull");
-        //Map<String, Object> data = new HashMap<String, Object>();
-        ExerciseList list = new ExerciseList("");
-        list.addExercise(new Exercise("Lat Pulldown"));
-        list.addExercise(new Exercise("Cable Row"));
-        //data.put("Exercises", list);
+        DocumentReference docs = firebaseFirestore.collection("Exercises").document("Abs");
+        ExerciseList list = new ExerciseList("Abs");
+        list.addExercise(new Exercise("Plank"));
+        list.addExercise(new Exercise("Mountain Climbers"));
+        list.addExercise(new Exercise("Crunches"));
         docs.set(list);
 
     }
