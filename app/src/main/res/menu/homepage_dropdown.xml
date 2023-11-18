@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/home_screen"
+        android:title="Home Page"
+        ></item>
+    <item android:id="@+id/Design_screen"
+        android:title="Design a Diet"
+        ></item>
+    <item android:id="@+id/Workroutine_screen"
+        android:title="Workout Routine"
+        ></item>
+    <item android:id="@+id/ency_screen"
+        android:title="Workout Encyclopedia"
+        ></item>
+    <item android:id="@+id/sign_out"
+        android:title="Sign Out"
+        ></item>
+
+</menu>

@@ -10,7 +10,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.PopupMenu;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.fitguide.Settings.Settings_Page;
 import com.example.fitguide.Workout_Creation.Workout_Selection;
@@ -31,15 +30,32 @@ public class MainActivity2 extends AppCompatActivity {
                 // Let workout creator know what kind of workout style the user wants for their routine.
                 if (item.getItemId() == R.id.sign_out){
                     Intent switchIntent = new Intent(MainActivity2.this, MainActivityLogin.class);
+                    switchIntent.putExtra("workout_style", item.getTitle());
                     firebaseAuth.signOut();
                     startActivity(switchIntent);
                     finish();
+                    return true;
+                }else if(item.getItemId()==R.id.home_screen){
+                    startActivity(new Intent(MainActivity2.this,MainActivity2.class));
+                    return true;
+
+                }
+                else if(item.getItemId()==R.id.Design_screen){
+                    startActivity(new Intent(MainActivity2.this,DietActivity.class));
+                    return true;
+                }
+                else if(item.getItemId()==R.id.Workroutine_screen){
+                    startActivity(new Intent(MainActivity2.this,Workout_Selection.class));
+                    return true;
+                }
+                else if(item.getItemId()==R.id.ency_screen){
+                    startActivity(new Intent(MainActivity2.this,WorkoutListActivity.class));
                     return true;
                 }
                 return false;
             }
         });
-        popup.inflate(R.menu.user_acc_drop_down);
+        popup.inflate(R.menu.homepage_dropdown);
         popup.show();
     }
 
@@ -99,6 +115,8 @@ public class MainActivity2 extends AppCompatActivity {
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // TODO: Load pop-up menu
+                // Disable menu selection for workout routine creation.
                 showPopup(v);
             }
         });
