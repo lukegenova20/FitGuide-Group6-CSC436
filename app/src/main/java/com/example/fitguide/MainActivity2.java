@@ -22,7 +22,7 @@ public class MainActivity2 extends AppCompatActivity {
     TextView username ;
     FirebaseAuth firebaseAuth;
     FirebaseFirestore firebaseFirestore;
-    private void showPopup(View v){
+    private void showDropdownPopup(View v){
         PopupMenu popup = new PopupMenu(this, v);
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -70,12 +70,16 @@ public class MainActivity2 extends AppCompatActivity {
                 document("Personal_info").get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        username.setText("Welcome "+documentSnapshot.get("First Name").toString() + "!");
+                        String name = documentSnapshot.get("First Name").toString();
+                        char first = Character.toUpperCase(name.charAt(0));
+                        String res = name.substring(1);
+                        name = first + res;
+                        username.setText("Welcome "+ name + "!");
                     }
                 });
-        ImageView designDiet = findViewById(R.id.design_diet);
-        ImageView selectWorkout = findViewById(R.id.select_workout);
-        ImageView workoutEncyclopedia = findViewById(R.id.workout_encyclopedia);
+        ImageButton designDiet = findViewById(R.id.design_diet);
+        ImageButton selectWorkout = findViewById(R.id.select_workout);
+        ImageButton workoutEncyclopedia = findViewById(R.id.workout_encyclopedia);
         workoutEncyclopedia.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -115,9 +119,7 @@ public class MainActivity2 extends AppCompatActivity {
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load pop-up menu
-                // Disable menu selection for workout routine creation.
-                showPopup(v);
+                showDropdownPopup(v);
             }
         });
 

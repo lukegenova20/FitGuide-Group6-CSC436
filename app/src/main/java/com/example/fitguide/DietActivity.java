@@ -23,7 +23,6 @@ public class DietActivity extends AppCompatActivity {
 
         Button designDiet = findViewById(R.id.new_diet);
         Button loadDiet = findViewById(R.id.load_diet);
-        Button backButton = findViewById(R.id.back_button);
         designDiet.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -40,14 +39,26 @@ public class DietActivity extends AppCompatActivity {
             }
         });
 
-        backButton.setOnClickListener(new View.OnClickListener() {
+        backButton();
+
+
+    }
+
+    /*
+     * Add the event handler for the back button.
+     */
+    private void backButton(){
+        Button back = findViewById(R.id.back_button_meal);
+
+        // Go back to the home page.
+        back.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), MainActivity2.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                Intent switchIntent = new Intent(v.getContext(), MainActivity2.class);
+                startActivity(switchIntent);
+                finish();
             }
         });
-
 
     }
 }

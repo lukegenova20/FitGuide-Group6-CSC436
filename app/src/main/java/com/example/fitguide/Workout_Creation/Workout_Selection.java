@@ -12,10 +12,12 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.Toast;
 
+import com.example.fitguide.DietActivity;
 import com.example.fitguide.MainActivity2;
 import com.example.fitguide.MainActivityLogin;
 import com.example.fitguide.R;
 import com.example.fitguide.Settings.Settings_Page;
+import com.example.fitguide.WorkoutListActivity;
 import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
@@ -75,7 +77,7 @@ public class Workout_Selection extends AppCompatActivity {
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                showSignOutPopup(v);
+                showDropdownPopup(v);
             }
         });
 
@@ -133,9 +135,10 @@ public class Workout_Selection extends AppCompatActivity {
     }
 
     /*
-     * Displays a drop down menu that allows the user to signout
+     * Show popup menu that gives the user the option to directly jump to a specific page, or
+     * sign out of their account.
      */
-    private void showSignOutPopup(View v){
+    private void showDropdownPopup(View v){
         PopupMenu popup = new PopupMenu(this, v);
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             @Override
@@ -143,15 +146,32 @@ public class Workout_Selection extends AppCompatActivity {
                 // Let workout creator know what kind of workout style the user wants for their routine.
                 if (item.getItemId() == R.id.sign_out){
                     Intent switchIntent = new Intent(Workout_Selection.this, MainActivityLogin.class);
+                    switchIntent.putExtra("workout_style", item.getTitle());
                     firebaseAuth.signOut();
                     startActivity(switchIntent);
                     finish();
+                    return true;
+                }else if(item.getItemId()==R.id.home_screen){
+                    startActivity(new Intent(Workout_Selection.this,MainActivity2.class));
+                    return true;
+
+                }
+                else if(item.getItemId()==R.id.Design_screen){
+                    startActivity(new Intent(Workout_Selection.this, DietActivity.class));
+                    return true;
+                }
+                else if(item.getItemId()==R.id.Workroutine_screen){
+                    startActivity(new Intent(Workout_Selection.this,Workout_Selection.class));
+                    return true;
+                }
+                else if(item.getItemId()==R.id.ency_screen){
+                    startActivity(new Intent(Workout_Selection.this, WorkoutListActivity.class));
                     return true;
                 }
                 return false;
             }
         });
-        popup.inflate(R.menu.user_acc_drop_down);
+        popup.inflate(R.menu.homepage_dropdown);
         popup.show();
     }
 
