@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
+import android.widget.EditText;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
@@ -27,6 +28,7 @@ import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
@@ -71,7 +73,7 @@ public class Workout_Creation extends AppCompatActivity {
         saveRoutine();
         addHeaderListeners();
 
-        // TODO: Might add this to a new page called current progress or delete it if there is no time.
+
         CheckBox check = findViewById(R.id.checkBox);
         check.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
@@ -166,6 +168,10 @@ public class Workout_Creation extends AppCompatActivity {
                 String day = getIntent().getStringExtra("exerciseListDay");
                 currentRoutine.addExerciseList(day, list);
             }
+
+            // Set text of edit text widget to be the name of the routine.
+            TextInputEditText name = findViewById(R.id.workout_name);
+            name.setText(currentRoutine.getName());
 
             // Change the body coverage text for each day in the UI based on the current routine.
             Button[] dateButtons = new Button[DAYS_IN_WEEK];
@@ -277,37 +283,43 @@ public class Workout_Creation extends AppCompatActivity {
                                 public void onSuccess(DocumentSnapshot documentSnapshot) {
                                     WorkoutRoutineList routineList = documentSnapshot.toObject(WorkoutRoutineList.class);
 
-                                    int result = routineList.getNumberOfRoutines() + 1;
-
                                     // Set complete name of the workout.
-                                    String name = "Workout" + result;
-                                    currentRoutine.setName(name);
+                                    TextInputEditText name = findViewById(R.id.workout_name);
+                                    if(name.getText().toString().isEmpty() || name.getText().toString().equals("")){
+                                        // If the user hasn't entered a name, notify the user.
+                                        builder.setMessage("You haven't given name for workout routine yet.");
+                                        AlertDialog alertDialog = builder.create();
+                                        alertDialog.show();
+                                    } else {
 
-                                    // Add the routine to the list.
-                                    routineList.addWorkoutRoutine(currentRoutine);
+                                        currentRoutine.setName(name.getText().toString());
 
-                                    // If the routine has been selected, set is as the selected exerice.
-                                    if (currentRoutine.getSelected()){
-                                        WorkoutRoutine selected = routineList.getSelected();
-                                        if (selected == null){
+                                        // Add the routine to the list.
+                                        routineList.addWorkoutRoutine(currentRoutine);
+
+                                        // If the routine has been selected, set is as the selected exerice.
+                                        if (currentRoutine.getSelected()){
+                                            WorkoutRoutine selected = routineList.getSelected();
+                                            if (selected != null){
+                                                routineList.removeWorkoutRoutine(selected);
+                                                selected.setSelected(false);
+                                                routineList.addWorkoutRoutine(selected);
+                                            }
                                             routineList.setSelected(currentRoutine);
-                                        } else {
-                                            routineList.removeWorkoutRoutine(selected);
-                                            selected.setSelected(false);
-                                            routineList.addWorkoutRoutine(selected);
                                         }
-                                    }
 
-                                    // Update the document.
-                                    doc.set(routineList).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                        @Override
-                                        public void onComplete(@NonNull Task<Void> task) {
-                                            Intent intent = new Intent(Workout_Creation.this, Workout_Selection.class);
-                                            startActivity(intent);
-                                            finish();
-                                            muscleGroups.clear();
-                                        }
-                                    });
+                                        // Update the document.
+                                        doc.set(routineList).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                Intent intent = new Intent(Workout_Creation.this, Workout_Selection.class);
+                                                startActivity(intent);
+                                                finish();
+                                                muscleGroups.clear();
+                                            }
+                                        });
+
+                                    }
                                 }
                             });
 
@@ -330,12 +342,18 @@ public class Workout_Creation extends AppCompatActivity {
         ImageButton drop = findViewById(R.id.Dropdown);
         ImageButton settings = findViewById(R.id.Settings);
 
+        AlertDialog.Builder builder = new AlertDialog.Builder(Workout_Creation.this);
+        builder.setIcon(R.drawable.baseline_error_24);
+        builder.setTitle(" ");
+        builder.setCancelable(true);
+
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 // Disable menu selection for workout routine creation.
-                Toast.makeText(getApplicationContext(), "Disabled for Routine Creation", Toast.LENGTH_SHORT).show();
+                builder.setMessage("Feature is disabled for Routine Creation.");
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
 
@@ -343,8 +361,11 @@ public class Workout_Creation extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Disable menu selection for workout routine creation.
-                Toast.makeText(getApplicationContext(), "Disabled for Routine Creation", Toast.LENGTH_SHORT).show();
+                builder.setMessage("Feature is disabled for Routine Creation.");
+                AlertDialog alertDialog = builder.create();
+                alertDialog.show();
             }
         });
     }
+
 }

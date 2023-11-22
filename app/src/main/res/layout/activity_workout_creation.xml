@@ -69,6 +69,46 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <TextView
+                android:id="@+id/workout_creation_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:fontFamily="@font/jockey_one"
+                android:text="@string/routine_calender"
+                android:textColor="@color/black"
+                android:textSize="30sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/parent_workout_name"
+                android:layout_width="300dp"
+                android:layout_height="67dp"
+                android:layout_marginTop="30dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                app:hintEnabled="false"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/workout_creation_title">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/workout_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="67dp"
+                    android:background="@drawable/button_background"
+                    android:gravity="center_horizontal"
+                    android:hint="Name"
+                    android:imeOptions="actionDone"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textSize="30sp"
+                    android:fontFamily="@font/jockey_one"
+                    android:textColor="@color/black" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <FrameLayout
                 android:id="@+id/sunday_layout"
                 android:layout_width="250dp"
@@ -76,7 +116,7 @@
                 android:layout_marginTop="50dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/workout_creation_title">
+                app:layout_constraintTop_toBottomOf="@+id/parent_workout_name">
 
                 <Button
                     android:id="@+id/sunday_button"
@@ -118,19 +158,6 @@
 
             </FrameLayout>
 
-
-            <TextView
-                android:id="@+id/workout_creation_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:fontFamily="@font/jockey_one"
-                android:text="@string/routine_calender"
-                android:textColor="@color/black"
-                android:textSize="30sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
 
             <FrameLayout
                 android:id="@+id/monday_layout"
