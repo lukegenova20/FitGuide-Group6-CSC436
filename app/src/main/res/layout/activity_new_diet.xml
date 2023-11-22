@@ -80,6 +80,17 @@
                 android:layout_gravity="start"
                 android:clickable="true"/>
 
+            <!-- High-Calorie -->
+            <TextView
+                android:id="@+id/textview_highcalorie_breakfast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High-Calorie"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#8B0000"/>
+
+
             <!-- LUNCH -->
             <TextView
                 android:id="@+id/textview_lunch"
@@ -130,6 +141,16 @@
                 android:layout_gravity="start"
                 android:clickable="true" />
 
+            <!-- High-Calorie -->
+            <TextView
+                android:id="@+id/textview_highcalorie_lunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High-Calorie"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#8B0000"/>
+
             <!-- DINNER -->
             <TextView
                 android:id="@+id/textview_dinner"
@@ -179,6 +200,16 @@
                 android:textSize="15sp"
                 android:layout_gravity="start"
                 android:clickable="true" />
+
+            <!-- High-Calorie -->
+            <TextView
+                android:id="@+id/textview_highcalorie_dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="High-Calorie"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#8B0000"/>
 
             <Button
                 android:id="@+id/back_button"
