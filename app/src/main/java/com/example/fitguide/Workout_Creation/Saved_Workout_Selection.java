@@ -9,17 +9,23 @@ import android.content.Intent;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
+import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.fitguide.DietActivity;
+import com.example.fitguide.MainActivity2;
+import com.example.fitguide.MainActivityLogin;
 import com.example.fitguide.R;
 import com.example.fitguide.Settings.Settings_Page;
+import com.example.fitguide.WorkoutListActivity;
 import com.example.fitguide.Workout_Classes.WorkoutRoutine;
 import com.example.fitguide.Workout_Classes.WorkoutRoutineList;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -246,9 +252,7 @@ public class Saved_Workout_Selection extends AppCompatActivity {
         drop.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: Load pop-up menu
-                // Disable menu selection for workout routine creation.
-                Toast.makeText(getApplicationContext(), "NEED TO WORK ON THIS", Toast.LENGTH_SHORT).show();
+                showDropdownPopup(v);
             }
         });
 
@@ -259,5 +263,46 @@ public class Saved_Workout_Selection extends AppCompatActivity {
                 startActivity(switchIntent);
             }
         });
+    }
+
+    /*
+     * Show popup menu that gives the user the option to directly jump to a specific page, or
+     * sign out of their account.
+     */
+    private void showDropdownPopup(View v){
+        PopupMenu popup = new PopupMenu(this, v);
+        popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                // Let workout creator know what kind of workout style the user wants for their routine.
+                if (item.getItemId() == R.id.sign_out){
+                    Intent switchIntent = new Intent(Saved_Workout_Selection.this, MainActivityLogin.class);
+                    switchIntent.putExtra("workout_style", item.getTitle());
+                    firebaseAuth.signOut();
+                    startActivity(switchIntent);
+                    finish();
+                    return true;
+                }else if(item.getItemId()==R.id.home_screen){
+                    startActivity(new Intent(Saved_Workout_Selection.this, MainActivity2.class));
+                    return true;
+
+                }
+                else if(item.getItemId()==R.id.Design_screen){
+                    startActivity(new Intent(Saved_Workout_Selection.this, DietActivity.class));
+                    return true;
+                }
+                else if(item.getItemId()==R.id.Workroutine_screen){
+                    startActivity(new Intent(Saved_Workout_Selection.this,Workout_Selection.class));
+                    return true;
+                }
+                else if(item.getItemId()==R.id.ency_screen){
+                    startActivity(new Intent(Saved_Workout_Selection.this, WorkoutListActivity.class));
+                    return true;
+                }
+                return false;
+            }
+        });
+        popup.inflate(R.menu.homepage_dropdown);
+        popup.show();
     }
 }
