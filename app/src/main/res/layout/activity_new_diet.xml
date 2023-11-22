@@ -90,6 +90,35 @@
                 android:textStyle="bold"
                 android:textColor="#8B0000"/>
 
+            <!-- EGGS AND AVOCADO -->
+            <TextView
+                android:id="@+id/textview_avocado_eggs"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Eggs and Avocado"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true"/>
+
+            <!-- PB & BANANA SMOOTHIE -->
+            <TextView
+                android:id="@+id/textview_smoothie"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Smoothie with PB"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true"/>
+
+            <!-- FULL FAT GREEK YOGURT -->
+            <TextView
+                android:id="@+id/textview_fat_yogurt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Full Fat Greek Yogurt"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true"/>
 
             <!-- LUNCH -->
             <TextView
@@ -151,6 +180,36 @@
                 android:textStyle="bold"
                 android:textColor="#8B0000"/>
 
+            <!-- BEEF STIRFRY -->
+            <TextView
+                android:id="@+id/textview_beef_stirfry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Beef Stir-Fry"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true"/>
+
+            <!-- BEAN BURRITO -->
+            <TextView
+                android:id="@+id/textview_burrito"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Bean Burrito"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true"/>
+
+            <!-- CHICKEN CURRY -->
+            <TextView
+                android:id="@+id/textview_chicken_curry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Chicken Curry"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true"/>
+
             <!-- DINNER -->
             <TextView
                 android:id="@+id/textview_dinner"
@@ -210,6 +269,36 @@
                 android:textSize="18sp"
                 android:textStyle="bold"
                 android:textColor="#8B0000"/>
+
+            <!-- TILAPIA -->
+            <TextView
+                android:id="@+id/textview_tilapia"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tilapia"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true"/>
+
+            <!-- SPAGHETTI -->
+            <TextView
+                android:id="@+id/textview_spaghetti"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Spaghetti"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true"/>
+
+            <!-- PORK TENDERLOIN -->
+            <TextView
+                android:id="@+id/textview_pork"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Pork Tenderloin"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true"/>
 
             <Button
                 android:id="@+id/back_button"
