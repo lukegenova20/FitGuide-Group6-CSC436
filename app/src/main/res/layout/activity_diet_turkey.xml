@@ -38,11 +38,12 @@
             android:layout_width="364dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="- 4 salmon fillets (about 6 oz each)
-            \n- 1 bunch of asparagus, trimmed
-            \n- 2 tablespoons olive oil
-            \n- 1 lemon, sliced
-            \n- Salt and pepper to taste"
+            android:text="- 4 turkey breast fillets
+\n- 1 pound green beans, washed and trimmed
+\n- 2 tablespoons olive oil
+\n- 2 cloves garlic, minced
+\n- Salt and pepper to taste
+\n- Lemon wedges for serving"
             app:layout_constraintBottom_toTopOf="@+id/textview_fourth"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.489"
@@ -68,13 +69,13 @@
             android:id="@+id/textview_fifth"
             android:layout_width="364dp"
             android:layout_height="wrap_content"
-            android:text="Calories: 400
+            android:text="Calories: 300
             \nProtein: 30g
-            \nCarbs: 7g
-            \nDietary Fiber: 3g
-            \nSugars: 2g
-            \nFat: 28g
-            \nSaturated Fat: 4g
+            \nCarbs: 10g
+            \nDietary Fiber: 4g
+            \nSugars: 3g
+            \nFat: 15g
+            \nSaturated Fat: 3g
             \nCholesterol: 80mg
             \nSodium: 120mg
             \nCalcium: 60mg"
@@ -99,7 +100,7 @@
             android:id="@+id/textview_seventh"
             android:layout_width="364dp"
             android:layout_height="wrap_content"
-            android:text="Start by preheating the oven to 400 degrees. While the oven heats, place trimmed asparagus on a baking sheet and drizzle with 1 tbsp of olive oil and season with salt and pepper. Arrange lemon slices on baking sheet with asparagus and place salmon on top of the lemon slices. Pour remaining olive oil on salmon and season with salt and pepper. Bake 15-20 minutes and serve."
+            android:text="Season turkey breasts with salt, pepper and a drizzle of olive oil. Let marinate for 15-20 minutes then place on grill at medium-high heat. Grill about 6-8 minutes on each side. While this is cooking heat 1 tbsp of olive oil in a skillet over medium heat, add minced garlic and saute for 30 seconds. Add greenbeans and saute for 8-10 minutes. Serve turkey alongside the sauteed green beans."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.489"
@@ -124,13 +125,13 @@
             android:id="@+id/imageView"
             android:layout_width="265dp"
             android:layout_height="179dp"
-            android:src="@drawable/salmon"
-            tools:layout_editor_absoluteX="61dp"
-            tools:layout_editor_absoluteY="103dp" />
+            android:src="@drawable/turkey"
+            tools:layout_editor_absoluteX="63dp"
+            tools:layout_editor_absoluteY="72dp" />
 
 
         <!-- Adjust the constraint here -->
-        app:srcCompat="@drawable/quinoa"
+        app:srcCompat="@drawable/turkey"
         android:contentDescription="Image" />
 
 

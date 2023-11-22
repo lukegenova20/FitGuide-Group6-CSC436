@@ -40,6 +40,16 @@
                 android:textStyle="bold"
                 android:layout_gravity="start" />
 
+            <!-- Low-Calorie -->
+            <TextView
+                android:id="@+id/textview_lowcalorie_breakfast"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low-Calorie"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#006400" />
+
             <!-- Greek Yogurt -->
             <TextView
                 android:id="@+id/textview_greekyogurt"
@@ -79,6 +89,16 @@
                 android:textSize="25sp"
                 android:textStyle="bold"
                 android:layout_gravity="start" />
+
+            <!-- Low-Calorie -->
+            <TextView
+                android:id="@+id/textview_lowcalorie_lunch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low-Calorie"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#006400" />
 
             <!-- Chicken -->
             <TextView
@@ -120,6 +140,45 @@
                 android:textStyle="bold"
                 android:layout_gravity="start" />
 
+            <!-- Low-Calorie -->
+            <TextView
+                android:id="@+id/textview_lowcalorie_dinner"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Low-Calorie"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:textColor="#006400"/>
+
+            <!-- Salmon -->
+            <TextView
+                android:id="@+id/textview_salmon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Salmon"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true" />
+
+            <!-- Turkey -->
+            <TextView
+                android:id="@+id/textview_turkey"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Turkey"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true" />
+
+            <!-- Stir-Fry -->
+            <TextView
+                android:id="@+id/textview_stirFry"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tofu Stir-Fry"
+                android:textSize="15sp"
+                android:layout_gravity="start"
+                android:clickable="true" />
 
             <Button
                 android:id="@+id/back_button"

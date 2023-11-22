@@ -27,6 +27,9 @@ public class NewDietActivity extends AppCompatActivity {
         TextView chicken = findViewById(R.id.textview_chicken);
         TextView tuna = findViewById(R.id.textview_tuna);
         TextView quinoa = findViewById(R.id.textview_quinoa);
+        TextView salmon = findViewById(R.id.textview_salmon);
+        TextView turkey = findViewById(R.id.textview_turkey);
+        TextView stirFry = findViewById(R.id.textview_stirFry);
         Button backButton = findViewById(R.id.back_button);
 
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +87,30 @@ public class NewDietActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DietQuinoa.class);
+                startActivity(intent);
+            }
+        });
+
+        salmon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietSalmon.class);
+                startActivity(intent);
+            }
+        });
+
+        turkey.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietTurkey.class);
+                startActivity(intent);
+            }
+        });
+
+        stirFry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietStiryFry.class);
                 startActivity(intent);
             }
         });
