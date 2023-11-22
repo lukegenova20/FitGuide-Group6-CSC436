@@ -23,7 +23,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.example.fitguide.MainActivity2;
 import com.example.fitguide.MainActivityLogin;
