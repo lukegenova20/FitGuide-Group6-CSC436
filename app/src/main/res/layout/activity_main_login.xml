@@ -4,125 +4,111 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#3C719C"
-    tools:context=".MainActivityLogin">
+    android:background="@drawable/fitness_bg_2">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/parent_username_sign"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        app:hintEnabled="false"
+    <LinearLayout
+        android:layout_width="315dp"
+        android:layout_height="536dp"
+        android:layout_marginStart="57dp"
+        android:layout_marginTop="97dp"
+        android:layout_marginEnd="57dp"
+        android:layout_marginBottom="97dp"
+        android:background="@drawable/round_shapes"
+        android:elevation="30dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView"
-        app:startIconDrawable="@drawable/baseline_account_circle_24">
+        app:layout_constraintTop_toTopOf="parent">
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/username_sign"
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="118dp"
+            android:layout_height="124dp"
+            android:layout_marginLeft="100dp"
+            app:srcCompat="@drawable/app_icon" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/parent_username_sign"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:background="#B8B1B1"
-            android:hint="Username"
-            android:imeOptions="actionDone"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="#100C0C"
-            android:textColorHint="#FD333131" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="50dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            app:hintEnabled="false"
+            app:startIconDrawable="@drawable/baseline_account_circle_24">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/parent_password_sign"
-        android:layout_width="409dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        app:counterEnabled="true"
-        app:counterMaxLength="16"
-        app:helperTextEnabled="true"
-        app:helperTextTextColor="#FF0E0E"
-        app:hintEnabled="false"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parent_username_sign"
-        app:passwordToggleEnabled="true"
-        app:startIconDrawable="@drawable/baseline_lock_24">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/username_sign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_box_shape"
+                android:hint="Username"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#020101"
+                android:textColorHint="#2E1F1F"/>
+        </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/pass_sign"
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/parent_password_sign"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:background="#B8B1B1"
-            android:hint="Password"
-            android:imeOptions="actionDone"
-            android:maxLines="1"
-            android:singleLine="true"
-            android:textColor="#100C0C"
-            android:textColorHint="#FD333131"
-            tools:layout_editor_absoluteX="4dp"
-            tools:layout_editor_absoluteY="314dp" />
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            app:counterEnabled="true"
+            app:counterMaxLength="16"
+            app:helperTextEnabled="true"
+            app:helperTextTextColor="#FF0E0E"
+            app:hintEnabled="false"
+            app:passwordToggleEnabled="true"
+            app:startIconDrawable="@drawable/baseline_lock_24">
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="101dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/app_icon" />
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/pass_sign"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/text_box_shape"
+                android:hint="Password"
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="#020101"
+                android:textColorHint="#251C1C" />
+        </com.google.android.material.textfield.TextInputLayout>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="100dp"
-        android:text="FITGUIDE"
-        android:textColor="#F3ECEC"
-        android:textSize="50sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="10dp"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/login_btn"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="78dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="#F8F8F8"
-        android:text="Login"
-        android:textColor="#070000"
-        android:textSize="20dp"
-        app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/parent_password_sign" />
+            <Button
+                android:id="@+id/login_btn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginRight="20dp"
+                android:layout_weight="1"
+                android:backgroundTint="#000000"
+                android:text="Sign In"
+                android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/create_act_btn"
-        android:layout_width="0dp"
-        android:layout_height="51dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="10dp"
-        android:backgroundTint="#F1EAEA"
-        android:text=" Create Account"
-        android:textColor="#000000"
-        android:textSize="20dp"
-        app:cornerRadius="0dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/login_btn" />
+            <Button
+                android:id="@+id/create_act_btn"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:backgroundTint="#000000"
+                android:text="Create"
+                android:textSize="20sp" />
 
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
