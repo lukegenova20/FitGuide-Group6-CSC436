@@ -79,6 +79,12 @@
         <activity android:name=".DietSalmon" />
         <activity android:name=".DietTurkey" />
         <activity android:name=".DietStirFry" />
+        <activity android:name=".DietSmoothie" />
+        <activity android:name=".DietFatGreek" />
+        <activity android:name=".DietAvocado" />
+        <activity android:name=".DietBurrito" />
+        <activity android:name=".DietBeef" />
+        <activity android:name=".DietCurry" />
         <activity android:name=".NewDietActivity" />
 
         <activity android:name=".Diet_Creation" />

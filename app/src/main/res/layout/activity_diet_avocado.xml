@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondFragment">
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+
+
+
+        <TextView
+            android:id="@+id/textview_second"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ingredients"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textview_third"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/textview_third"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="-2 large eggs
+            \n- 1/2 avocado, sliced
+            \n- 2 slices of whole-grain bread
+            \n- Salt and pepper to taste
+            \n- Olive oil or cooking spray"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fourth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_second"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textview_fourth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Nutrition Facts:"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fifth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/textview_fifth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Calories: 400 (varies based on the type of milk used and the amount of honey)
+           \nProtein: 18 grams
+           \nCarbohydrates: 32 grams
+           \nDietary Fiber: 8 grams
+           \nSugars: 2 grams
+           \nFat: 24 grams
+           \nSaturated Fat: 5 grams
+           \nCholesterol: 370 milligrams
+           \nSodium: 600 milligrams
+           \nCalcium: 120 milligrams"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.659"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fourth" />
+
+        <TextView
+            android:id="@+id/textview_sixth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Instructions:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fifth"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/textview_seventh"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Cut avocado in half, remove pit, and mash in a bowl with salt and pepper. Crack eggs into a bowl with salt and pepper. Heat a non-stick skillet over medium heat, pour in eggs and let sit for a few seconds. Stir with a spatula until cooked to your preference. Toast bread slices, spread avocado on toasted bread, serve eggs alongside and enjoy."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_sixth"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            app:layout_constraintTop_toBottomOf="@+id/textview_seventh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp" />
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="365dp"
+            android:layout_height="279dp"
+            android:src="@drawable/avocado"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <!-- Adjust the constraint here -->
+        app:srcCompat="@drawable/avocado"
+        android:contentDescription="Image" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+

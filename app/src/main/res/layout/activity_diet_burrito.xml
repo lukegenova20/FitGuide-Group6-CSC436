@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondFragment">
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+
+
+
+        <TextView
+            android:id="@+id/textview_second"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ingredients"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textview_third"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/textview_third"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="-1 large sweet potato, peeled and diced
+            \n- 1 can (15 oz) black beans
+            \n- 1 cup corn kernels
+            \n- 1 bell pepper, diced
+            \n- 1  onion, finely chopped
+            \n- 1 teaspoon cumin
+            \n- 1 teaspoon chili powder
+            \n- Whole wheat or corn tortillas"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fourth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_second"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textview_fourth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Nutrition Facts:"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fifth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/textview_fifth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Calories: 450
+           \nProtein: 10 grams
+           \nCarbohydrates: 70 grams
+           \nDietary Fiber: 15 grams
+           \nSugars: 7 grams
+           \nFat: 15 grams
+           \nSaturated Fat: 2 grams
+           \nCholesterol: 0 milligrams
+           \nSodium: 450 milligrams
+           \nCalcium: 80 milligrams"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.659"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fourth" />
+
+        <TextView
+            android:id="@+id/textview_sixth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Instructions:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fifth"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/textview_seventh"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Preheat oven to 400 degrees then throw in sweet potatoes that have been toessed in olive oil, cumin, chili powder, salt and pepper. Bake 20-25 minutes or until tender. In a skillet, saute onions and bell peppers then add beans. Cook until heated through. Warm tortillas, then spread a spoonful of bean mixture and guacamole and enjoy."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_sixth"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            app:layout_constraintTop_toBottomOf="@+id/textview_seventh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp" />
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="365dp"
+            android:layout_height="279dp"
+            android:src="@drawable/beef"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <!-- Adjust the constraint here -->
+        app:srcCompat="@drawable/beef"
+        android:contentDescription="Image" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SecondFragment">
+
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp">
+
+
+
+
+        <TextView
+            android:id="@+id/textview_second"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Ingredients"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textview_third"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+
+
+        <TextView
+            android:id="@+id/textview_third"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="- 1 cup Full-fat Greek yogurt
+            \n- 1/2 cup Granola (choose a variety with low added sugars)
+            \n- 1/2 cup Mixed fruit"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fourth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_second"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/textview_fourth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Nutrition Facts:"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/textview_fifth"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.468"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/textview_fifth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Calories: 350-400
+           \nProtein: 12-20 grams
+           \nCarbohydrates: 40-45 grams
+           \nDietary Fiber: 5-8 grams
+           \nSugars: 20-25 grams
+           \nFat: 15-20 grams
+           \nSaturated Fat: 5-8 gram
+           \nCholesterol: 20-30 milligrams
+           \nSodium: 50-100 milligrams
+           \nCalcium: 200-300 milligrams"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fourth" />
+
+
+        <TextView
+            android:id="@+id/textview_sixth"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Instructions:"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_fifth"
+            android:textStyle="bold"
+            />
+
+
+        <TextView
+            android:id="@+id/textview_seventh"
+            android:layout_width="364dp"
+            android:layout_height="wrap_content"
+            android:text="Cut fruits up into bite-size pieces. Scoop greek yogurt into a bowl. Sprinkle granola atop the yogurt, then top with the chopped up mixed fruits. Mix ingredients or layer as desired and enjoy."
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.489"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textview_sixth"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <Button
+            android:id="@+id/back_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Back"
+            app:layout_constraintTop_toBottomOf="@+id/textview_seventh"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="16dp" />
+
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="365dp"
+            android:layout_height="279dp"
+            android:src="@drawable/fatgreek"
+            tools:layout_editor_absoluteX="2dp"
+            tools:layout_editor_absoluteY="146dp" />
+
+
+        <!-- Adjust the constraint here -->
+        app:srcCompat="@drawable/fatgreek"
+        android:contentDescription="Image" />
+
+
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.core.widget.NestedScrollView>
+

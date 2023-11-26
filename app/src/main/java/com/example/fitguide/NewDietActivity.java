@@ -21,15 +21,29 @@ public class NewDietActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_diet);
 
+        // LOW CALORIE
+        // Breakfast
         TextView greekYogurt = findViewById(R.id.textview_greekyogurt);
         TextView eggs = findViewById(R.id.textview_eggs);
         TextView oatmeal = findViewById(R.id.textview_oatmeal);
+        // Lunch
         TextView chicken = findViewById(R.id.textview_chicken);
         TextView tuna = findViewById(R.id.textview_tuna);
         TextView quinoa = findViewById(R.id.textview_quinoa);
+        // Dinner
         TextView salmon = findViewById(R.id.textview_salmon);
         TextView turkey = findViewById(R.id.textview_turkey);
         TextView stirFry = findViewById(R.id.textview_stirFry);
+        // HIGH CALORIE
+        // Breakfast
+        TextView avocado = findViewById(R.id.textview_avocado_eggs);
+        TextView fatYogurt = findViewById(R.id.textview_fat_yogurt);
+        TextView smoothie = findViewById(R.id.textview_smoothie);
+        // Lunch
+        TextView beef = findViewById(R.id.textview_beef_stirfry);
+        TextView burrito = findViewById(R.id.textview_beef_stirfry);
+        TextView curry = findViewById(R.id.textview_chicken_curry);
+
         Button backButton = findViewById(R.id.back_button);
 
         backButton.setOnClickListener(new View.OnClickListener() {
@@ -115,5 +129,52 @@ public class NewDietActivity extends AppCompatActivity {
             }
         });
 
+        avocado.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietAvocado.class);
+                startActivity(intent);
+            }
+        });
+
+        smoothie.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietSmoothie.class);
+                startActivity(intent);
+            }
+        });
+
+        fatYogurt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietFatGreek.class);
+                startActivity(intent);
+            }
+        });
+
+        beef.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietBeef.class);
+                startActivity(intent);
+            }
+        });
+
+        burrito.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietBurrito.class);
+                startActivity(intent);
+            }
+        });
+
+        curry.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietCurry.class);
+                startActivity(intent);
+            }
+        });
     }
 }
