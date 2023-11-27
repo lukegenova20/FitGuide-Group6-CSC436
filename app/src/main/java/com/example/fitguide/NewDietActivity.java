@@ -41,7 +41,7 @@ public class NewDietActivity extends AppCompatActivity {
         TextView smoothie = findViewById(R.id.textview_smoothie);
         // Lunch
         TextView beef = findViewById(R.id.textview_beef_stirfry);
-        TextView burrito = findViewById(R.id.textview_beef_stirfry);
+        TextView burrito = findViewById(R.id.textview_burrito);
         TextView curry = findViewById(R.id.textview_chicken_curry);
         // Dinner
         TextView pork = findViewById(R.id.textview_pork);
