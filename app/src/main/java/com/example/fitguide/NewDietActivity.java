@@ -43,6 +43,10 @@ public class NewDietActivity extends AppCompatActivity {
         TextView beef = findViewById(R.id.textview_beef_stirfry);
         TextView burrito = findViewById(R.id.textview_beef_stirfry);
         TextView curry = findViewById(R.id.textview_chicken_curry);
+        // Dinner
+        TextView pork = findViewById(R.id.textview_pork);
+        TextView spaghetti = findViewById(R.id.textview_spaghetti);
+        TextView tilapia = findViewById(R.id.textview_tilapia);
 
         Button backButton = findViewById(R.id.back_button);
 
@@ -173,6 +177,30 @@ public class NewDietActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(getApplicationContext(), DietCurry.class);
+                startActivity(intent);
+            }
+        });
+
+        pork.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietPork.class);
+                startActivity(intent);
+            }
+        });
+
+        spaghetti.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietSpaghetti.class);
+                startActivity(intent);
+            }
+        });
+
+        tilapia.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), DietTilapia.class);
                 startActivity(intent);
             }
         });

@@ -37,20 +37,17 @@
             android:layout_width="364dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="-1 lb (450g) boneless, skinless chicken breast, cut into bite-sized pieces
-            \n- 1 tablespoon vegetable oil
-            \n- 1 onion, finely chopped
-            \n- 2 cloves garlic, minced
-            \n- 1 tablespoon ginger, grated
-            \n- 1 bell pepper, sliced
-            \n- 1 zucchini, sliced
-            \n- 1 carrot, sliced
-            \n- 2 tablespoons curry powder
-            \n- 1 teaspoon ground cumin
-            \n- 1 teaspoon ground coriander
-            \n- 1 teaspoon turmeric
-            \n- 1 can (14 oz) diced tomatoes
-            \n- 1 can (14 oz) coconut milk"
+            android:text="-1 pound pork tenderloin
+            \n- 2 tablespoons olive oil
+            \n- 1 teaspoon dried rosemary
+            \n- 1 teaspoon dried thyme
+            \n- 1 pound baby potatoes, halved
+            \n- 2 tablespoons olive oil
+            \n- 1 teaspoon garlic powder
+            \n- 1 cup baby carrots
+            \n- 1 cup broccoli florets
+            \n- 1 cup bell peppers, sliced
+            \n- 2 tablespoons olive oil"
             app:layout_constraintBottom_toTopOf="@+id/textview_fourth"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -77,15 +74,15 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
             android:text="Calories: 500
-           \nProtein: 30 grams
-           \nCarbohydrates: 45 grams
-           \nDietary Fiber: 8 grams
-           \nSugars: 6 grams
-           \nFat: 22 grams
-           \nSaturated Fat: 15 grams
-           \nCholesterol: 75 milligrams
-           \nSodium: 800 milligrams
-           \nCalcium: 100 milligrams"
+           \nProtein: 35 grams
+           \nCarbohydrates: 35 grams
+           \nDietary Fiber: 6 grams
+           \nSugars: 5 grams
+           \nFat: 25 grams
+           \nSaturated Fat: 5 grams
+           \nCholesterol: 100 milligrams
+           \nSodium: 400 milligrams
+           \nCalcium: 60 milligrams"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.659"
             app:layout_constraintStart_toStartOf="parent"
@@ -107,7 +104,7 @@
             android:id="@+id/textview_seventh"
             android:layout_width="364dp"
             android:layout_height="wrap_content"
-            android:text="Fully cook quinoa and set aside. Heat oil in a large pan at medium heat with onion, garlic, and ginger. Add chicken pieces and cook until browned. Stir in bell peppers, zucchini, and carrots then season with curry powder, coriander, turmeric, salt, and pepper. Pur in diced tomatoes and coconut milk, then let simmer for 10-15 minutes. Serve chicken and vegetable curry over a bed of quinoa."
+            android:text="Rub pork with olive oil, rosemary, thyme, salt and pepper. Place in roasting pan at 400 degrees. Spread potatoes tossed in olive oil, garlic powder, salt and pepper around the pork. Let cook for 25-30 minutes. Separately, mix carrots, broccoli, and bell peppers with olive oil, salt and pepper. Add these to the roasting pan and cook for an additional 10-15 minutes."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.489"
@@ -132,13 +129,13 @@
             android:id="@+id/imageView"
             android:layout_width="365dp"
             android:layout_height="279dp"
-            android:src="@drawable/curry"
+            android:src="@drawable/pork"
             tools:layout_editor_absoluteX="2dp"
             tools:layout_editor_absoluteY="146dp" />
 
 
         <!-- Adjust the constraint here -->
-        app:srcCompat="@drawable/curry"
+        app:srcCompat="@drawable/pork"
         android:contentDescription="Image" />
 
 

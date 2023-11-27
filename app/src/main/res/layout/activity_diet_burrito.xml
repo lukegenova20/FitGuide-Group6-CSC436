@@ -126,13 +126,13 @@
             android:id="@+id/imageView"
             android:layout_width="365dp"
             android:layout_height="279dp"
-            android:src="@drawable/beef"
+            android:src="@drawable/burrito"
             tools:layout_editor_absoluteX="2dp"
             tools:layout_editor_absoluteY="146dp" />
 
 
         <!-- Adjust the constraint here -->
-        app:srcCompat="@drawable/beef"
+        app:srcCompat="@drawable/burrito"
         android:contentDescription="Image" />
 
 
