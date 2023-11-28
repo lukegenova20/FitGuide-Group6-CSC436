@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -20,13 +21,28 @@ public class WorkoutListActivity extends AppCompatActivity {
         setContentView(R.layout.activity_workout_list);
 
         workoutListView = findViewById(R.id.workout_list);
+        Button backButton = findViewById(R.id.back_button2);
 
         // Create a list of dummy workouts
         String[] workouts = new String[]{
                 "Bench Press",
                 "Deadlift",
-                "Workout 2",
-                "Workout 3",
+                "Plank",
+                "Mountain Climbers",
+                "Crunches",
+                "-->  Arms  <---",
+                "Bicep Curls",
+                "Triceps Curls",
+                "-->  Biceps  <---",
+                "Barbell Curl",
+                "Dumbbell Curl",
+                "-->  Triceps  <---",
+                "Tricep Dips",
+                "Tricep Pushdown",
+                "-->  Forearms  <---",
+                "Wrist Curls",
+                "Reverse Curls",
+
                 // ... Add as many as you need
         };
         adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, workouts);
@@ -36,12 +52,18 @@ public class WorkoutListActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent intent = new Intent(WorkoutListActivity.this, WorkoutDetailActivity.class);
-                if (position == 1) {
-                    intent.putExtra("workout", "Deadlift");
-                } else if (position == 0) {
-                    intent.putExtra("workout", "Bench Press");
-                }
+                // Pass the selected workout name to WorkoutDetailActivity
+                intent.putExtra("workout", workouts[position]);
                 startActivity(intent);
+            }
+        });
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(WorkoutListActivity.this, MainActivity2.class);
+                startActivity(intent);
+                finish();
             }
         });
     }

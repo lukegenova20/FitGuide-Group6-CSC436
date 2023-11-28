@@ -128,5 +128,14 @@ public class MainActivityLogin extends AppCompatActivity {
         list.addExercise(new Exercise("Crunches"));
         docs.set(list);
 
+        DocumentReference docs2 = firebaseFirestore.collection("Exercises").document("Arms");
+        ExerciseList list2 = new ExerciseList("Arms");
+        //added biceps curl and triceps curl
+
+
+        docs.set(list2);
+
+
+
     }
 }

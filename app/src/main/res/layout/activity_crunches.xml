@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/workout_bench_press"
+    android:id="@+id/workout_crunches"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D9D9D9">
-
-
 
     <Button
         android:id="@+id/back_button"
@@ -24,14 +22,15 @@
         android:textSize="19sp"
         app:backgroundTint="@null"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/exerciseImage"/>
-    <!-- Exercise Title -->
+        app:layout_constraintBottom_toTopOf="@+id/exerciseImage" />
+
+    <!-- Exercise Title for Crunches -->
     <TextView
         android:id="@+id/exerciseTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Bench Press"
+        android:text="Crunches"
         android:textStyle="bold"
         android:textAlignment="center"
         android:textSize="28sp"
@@ -39,14 +38,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Exercise Image -->
+
     <ImageView
         android:id="@+id/exerciseImage"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/bench_press"
+        android:src="@drawable/crunches_image"
         app:layout_constraintDimensionRatio="H,16:9"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -65,17 +64,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/exerciseImage" />
 
-    <!-- Difficulty Value -->
+    <!-- Difficulty Value (You can set the difficulty level) -->
     <TextView
         android:id="@+id/difficultyValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Medium"
+        android:text="Easy"
         android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@+id/difficultyLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Exercise Equipment Label -->
     <TextView
         android:id="@+id/equipmentLabel"
         android:layout_width="wrap_content"
@@ -88,17 +88,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/difficultyValue" />
 
-    <!-- Exercise Equipment Value -->
+    <!-- Exercise Equipment Value (You can specify the equipment needed) -->
     <TextView
         android:id="@+id/equipmentValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Barbell, Weights"
+        android:text="Exercise Mat"
         android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@+id/equipmentLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- Primary Body Coverage Label -->
     <TextView
         android:id="@+id/bodyCoverageLabel"
         android:layout_width="wrap_content"
@@ -116,12 +117,13 @@
         android:id="@+id/bodyCoverageValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Chest Area: Pectoralis major and Pectoralis minor\nShoulder Area: Anterior deltoid\nArm Area: Triceps brachii"
+        android:text="Abdominal Muscles"
         android:textAlignment="center"
         app:layout_constraintTop_toBottomOf="@+id/bodyCoverageLabel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <!-- How to Label -->
     <TextView
         android:id="@+id/howToLabel"
         android:layout_width="wrap_content"
@@ -142,14 +144,13 @@
         app:layout_constraintStart_toStartOf="@+id/exerciseImage"
         app:layout_constraintEnd_toEndOf="@+id/exerciseImage">
 
+        <!-- Instructions for Crunches exercise -->
         <TextView
             android:id="@+id/howToInstructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1. Lie down on the bench or floor with feet flat on the floor. Your head, shoulder blades, glutes, and feet should all be on the bench or floor.\n2. Grasp the barbell with thumbs wrapped around the bar. Your hands should be as far apart as your shoulder width.\n3. Draw in your abdomen to stabilize your spine. Bring your shoulder blades closer together. Your wrists should be directly under the bar to avoid hyperextending them.\n4. Lower the barbell towards your chest, keeping your back straight and your head on the bench. Stop when you feel a stretch in your pectoral muscles.\n5. Now, raise the barbell by extending your elbows and contracting the chest muscles.\n6. Inhale when lowering the barbell, and let your breath out (exhale) when lifting the barbell.\n7. Repeat by going back to Step 3 until you can't do more."
+            android:text="1. Lie down on your back with your knees bent and feet flat on the floor.\n2. Place your hands behind your head, but do not pull on your neck.\n3. Engage your core muscles and lift your shoulders off the floor, keeping your lower back on the ground.\n4. Exhale as you contract your abdominal muscles and lift your upper back off the floor.\n5. Inhale as you lower your upper back and shoulders back to the floor.\n6. Repeat for the desired number of repetitions."
             android:textAlignment="center"
-            android:paddingStart="20dp"/>  <!-- Added padding here -->
+            android:paddingStart="20dp" />
     </ScrollView>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
-
