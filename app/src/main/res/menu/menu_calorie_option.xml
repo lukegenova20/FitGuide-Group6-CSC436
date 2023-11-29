@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/high_calorie"
+        android:title="High Calorie"
+        ></item>
+    <item android:id="@+id/low_calorie"
+        android:title="Low Calorie"
+        ></item>
+
+</menu>
