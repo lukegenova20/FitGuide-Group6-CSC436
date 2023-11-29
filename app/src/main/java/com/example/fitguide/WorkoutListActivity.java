@@ -1,12 +1,16 @@
 package com.example.fitguide;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -61,20 +65,13 @@ public class WorkoutListActivity extends AppCompatActivity {
                 "Barbell Hip Thrusts",
                 "-->  Hips  <---",
                 "Hip Abduction Exercise",
-                "-->  Break  <---",
+                "-->  Back  <---",
                 "Pull-Up"
-
-
-
-
-
-
-
-                // ... Add as many as you need
         };
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, workouts);
+//        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, workouts);
+//        workoutListView.setAdapter(adapter);
+        WorkoutListAdapter adapter = new WorkoutListAdapter(this, workouts);
         workoutListView.setAdapter(adapter);
-
         workoutListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
@@ -95,3 +92,4 @@ public class WorkoutListActivity extends AppCompatActivity {
         });
     }
 }
+
