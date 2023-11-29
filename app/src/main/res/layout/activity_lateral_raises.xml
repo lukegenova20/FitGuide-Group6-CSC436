@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/workout_overhead_shoulder_press"
+    android:id="@+id/workout_lateral_raises"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         android:id="@+id/exerciseTitle"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="Deadlift"
+        android:text="Lateral Raises"
         android:textStyle="bold"
         android:textSize="28sp"
         android:gravity="center"
@@ -46,7 +46,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
         android:scaleType="fitCenter"
-        android:src="@drawable/deadlift"
+        android:src="@drawable/lateral_raises_image"
         app:layout_constraintDimensionRatio="H,16:9"
         app:layout_constraintTop_toBottomOf="@+id/exerciseTitle"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,7 +67,7 @@
         android:id="@+id/difficultyValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hard"
+        android:text="Easy to Intermediate"
         app:layout_constraintTop_toBottomOf="@+id/difficultyLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -87,7 +87,7 @@
         android:id="@+id/equipmentValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Barbell, Weights"
+        android:text="Dumbbells"
         app:layout_constraintTop_toBottomOf="@+id/equipmentLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -107,7 +107,7 @@
         android:id="@+id/bodyCoverageValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Back: Erector Spinae\nLegs: Hamstrings, Quadriceps, Glutes\nLower Back: Trapezius"
+        android:text="Shoulders (Deltoids)"
         app:layout_constraintTop_toBottomOf="@+id/bodyCoverageLabel"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -129,15 +129,19 @@
         app:layout_constraintTop_toBottomOf="@+id/howToLabel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="@+id/exerciseImage"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="@+id/exerciseImage">
 
         <TextView
             android:id="@+id/howToInstructions"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="1. Stand with your feet hip-width apart, toes pointing forward.\n2. Bend at your hips and knees to lower your body and grip the barbell with an overhand grip, hands shoulder-width apart.\n3. Keep your back flat, chest up, and shoulders back.\n4. Lift the barbell by extending your hips and knees, keeping it close to your body.\n5. Stand tall with the barbell in your hands, then lower it back to the ground.\n6. Repeat for the desired number of repetitions."
+            android:text="1. Stand upright with your feet shoulder-width apart, holding dumbbells at your sides.\n2. Keep your back straight and chest up.\n3. While keeping your elbows slightly bent, raise the dumbbells to the side until your arms are parallel to the floor.\n4. Pause at the top for a moment, then slowly lower the dumbbells back to the starting position.\n5. Repeat for the desired number of repetitions."
             android:textAlignment="center"
-            android:paddingStart="20dp"/>
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/howToLabel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
     </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

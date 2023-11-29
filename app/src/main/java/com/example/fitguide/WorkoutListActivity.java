@@ -25,11 +25,6 @@ public class WorkoutListActivity extends AppCompatActivity {
 
         // Create a list of dummy workouts
         String[] workouts = new String[]{
-                "Bench Press",
-                "Deadlift",
-                "Plank",
-                "Mountain Climbers",
-                "Crunches",
                 "-->  Arms  <---",
                 "Bicep Curls",
                 "Triceps Curls",
@@ -42,6 +37,38 @@ public class WorkoutListActivity extends AppCompatActivity {
                 "-->  Forearms  <---",
                 "Wrist Curls",
                 "Reverse Curls",
+                "-->  Chest  <---",
+                "Bench Press",
+                "Push-Ups",
+                "-->  Shoulder  <---",
+                "Lateral Raises",
+                "Overhead Shoulder Press",
+                "Mountain Climbers",
+                "-->  Abs  <---",
+                "Crunches",
+                "Plank",
+                "-->  Legs  <---",
+                "Squats",
+                "Lunges",
+                "-->  Hamstrings  <---",
+                "Deadlift",
+                "Lying Leg Curls",
+                "-->  Quadriceps  <---",
+                "Leg Press",
+                "-->  Calves  <---",
+                "Calf Raises",
+                "-->  Glutes  <---",
+                "Barbell Hip Thrusts",
+                "-->  Hips  <---",
+                "Hip Abduction Exercise",
+                "-->  Break  <---",
+                "Pull-Up"
+
+
+
+
+
+
 
                 // ... Add as many as you need
         };

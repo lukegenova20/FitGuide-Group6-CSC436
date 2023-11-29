@@ -48,6 +48,46 @@ public class WorkoutDetailActivity extends AppCompatActivity {
         else if ("Reverse Curls".equals(workout)) {
             setContentView(R.layout.activity_reverse_curls);
         }
+        else if ("Bench Press".equals(workout)) {
+            setContentView(R.layout.activity_bench_press);
+        }
+        else if ("Push-Ups".equals(workout)) {
+            setContentView(R.layout.activity_push_ups);
+        }
+        else if ("Lateral Raises".equals(workout)) {
+            setContentView(R.layout.activity_lateral_raises);
+        }
+        else if ("Overhead Shoulder Press".equals(workout)) {
+            setContentView(R.layout.activity_overhead_shoulder_press);
+        }
+        else if ("Squats".equals(workout)) {
+            setContentView(R.layout.activity_squats);
+        }
+        else if ("Lunges".equals(workout)) {
+            setContentView(R.layout.activity_lunges);
+        }
+        else if ("Lying Leg Curls".equals(workout)) {
+            setContentView(R.layout.activity_lying_leg_curls);
+        }
+        else if ("Leg Press".equals(workout)) {
+            setContentView(R.layout.activity_leg_press);
+        }
+        else if ("Calf Raises".equals(workout)) {
+            setContentView(R.layout.activity_calf_raises);
+        }
+        else if ("Barbell Hip Thrusts".equals(workout)) {
+            setContentView(R.layout.activity_barbell_hip_thrust);
+        }
+        else if ("Hip Abduction Exercise".equals(workout)) {
+            setContentView(R.layout.activity_hip_abduction_exercise);
+        }
+        else if ("Pull-Up".equals(workout)) {
+            setContentView(R.layout.activity_pull_up);
+        }
+
+
+
+
         else {
             setContentView(R.layout.activity_bench_press);
         }
