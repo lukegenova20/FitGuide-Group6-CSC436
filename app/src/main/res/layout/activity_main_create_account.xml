@@ -102,7 +102,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:background="@drawable/text_box_shape"
-                android:hint="Username"
+                android:hint="E-mail"
                 android:imeOptions="actionDone"
                 android:singleLine="true"
                 android:textColor="#0B0B0B"

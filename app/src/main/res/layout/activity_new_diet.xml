@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".NewDietActivity">
 
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -20,7 +21,26 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
+
+
             <!-- Upper Body (Heading) -->
+            <Button
+                android:id="@+id/back_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/button_background"
+                android:drawableLeft="@drawable/arrow_back"
+                android:fontFamily="@font/jockey_one"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingBottom="8dp"
+                android:text="Back"
+                android:textColor="@color/black"
+                android:textSize="19sp"
+                app:backgroundTint="@null"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="parent" />
+
             <TextView
                 android:id="@+id/textview_meals"
                 android:layout_width="wrap_content"
@@ -31,6 +51,7 @@
                 android:layout_gravity="center" />
 
             <!-- BREAKFAST -->
+
             <TextView
                 android:id="@+id/textview_breakfast"
                 android:layout_width="wrap_content"
@@ -299,19 +320,6 @@
                 android:textSize="15sp"
                 android:layout_gravity="start"
                 android:clickable="true"/>
-
-            <Button
-                android:id="@+id/back_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
-                android:layout_marginTop="16dp" />
-
-
 
         </LinearLayout>
 

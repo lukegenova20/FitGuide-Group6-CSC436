@@ -48,7 +48,7 @@ public class DietActivity extends AppCompatActivity {
      * Add the event handler for the back button.
      */
     private void backButton(){
-        Button back = findViewById(R.id.back_button_meal);
+        Button back = findViewById(R.id.back_button);
 
         // Go back to the home page.
         back.setOnClickListener(new View.OnClickListener() {
